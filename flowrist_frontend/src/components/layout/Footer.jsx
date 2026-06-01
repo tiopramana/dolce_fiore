@@ -1,12 +1,14 @@
+import Icon from "../../assets/favicon.jpg";
+
 export function Footer() {
   return (
     <footer class="border py-12 px-4 sm:px-6 lg:px-8 mt-50 border-gray-300">
       <div class="w-full max-w-7xl mx-auto">
         <div class="flex flex-wrap justify-between gap-y-12 lg:gap-x-8">
           <div class="w-full md:w-[45%] lg:w-[35%] flex flex-col items-center md:items-start text-center md:text-left">
-            <a href="https://prebuiltui.com">
+            <a href="#">
               <div className="flex items-center">
-                <img src="../public/favicon.jpg" alt="" className="w-20 h-20" />
+                <img src={Icon} alt="" className="w-20 h-20" />
                 <span className="px-6 text-xl">Dolce Fiore</span>
               </div>
             </a>
