@@ -259,7 +259,7 @@ export const Home = () => {
               </p>
               <a
                 href="#shop"
-                className="hero-btn inline-flex mt-5 items-center justify-center bg-white px-10 py-4 text-xs font-medium uppercase tracking-[0.2em] text-foreground transition-colors hover:bg-white/80"
+                className="hero-btn inline-flex mt-5 mb-10 items-center justify-center bg-white px-10 py-4 text-xs font-medium uppercase tracking-[0.2em] text-foreground transition-colors hover:bg-white/80"
               >
                 Shop Now
               </a>
