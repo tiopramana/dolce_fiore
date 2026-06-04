@@ -1,0 +1,17 @@
+@import "tailwindcss";
+@import url("https://fonts.googleapis.com/css2?family=Jersey+15&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Manrope:wght@200..800&family=Momo+Trust+Display&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+/* Global styles */
+html,
+body,
+#root {
+  height: 100%;
+  font-family: "Manrope", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  overflow-x: hidden;
+}
+
+body {
+  @apply bg-[#FFFCFB] text-gray-900;
+  @apply scroll-m-5;
+}
