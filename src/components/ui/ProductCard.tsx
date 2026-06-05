@@ -16,8 +16,7 @@ export function ProductCard({
   const [hovered, setHovered] = useState(false);
 
   return (
-    <a
-      href="#shop"
+    <div
       className="group relative"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
@@ -57,6 +56,6 @@ export function ProductCard({
           {price}
         </p>
       </div>
-    </a>
+    </div>
   );
 }

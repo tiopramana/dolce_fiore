@@ -8,22 +8,13 @@ import { CtaBanner } from "../components/ui/Cta";
 import { Plus, Minus } from "lucide-react";
 import { useScrollAnimation } from "../components/layout/ScollAnim";
 
+import { useProducts } from "../hooks/useProducts";
+import { resolveImageUrl } from "../services/api";
+import { Link } from "react-router-dom";
+
 import hero1 from "../assets/hero1.png";
 import hero2 from "../assets/hero2.png";
-
-import sale1 from "../assets/sale1.png";
-import sale1_hover from "../assets/sale1-hover.png";
-import sale2 from "../assets/sale2.png";
-import sale2_hover from "../assets/sale2-hover.png";
-import sale3 from "../assets/sale3.png";
-import sale3_hover from "../assets/sale3-hover.png";
-
-import col1 from "../assets/col1.png";
-import col1_hov from "../assets/col1-hov.png";
 import col2 from "../assets/col2.png";
-import col2_hov from "../assets/col2-hover.png";
-import col3 from "../assets/col3.png";
-import col3_hov from "../assets/col3-hov.png";
 
 // ─── Animation CSS (injected once) ──────────────────────────────────────────
 const ANIM_STYLES = `
@@ -167,40 +158,15 @@ const services = [
   },
 ];
 
-const saleProducts = [
-  {
-    name: "Crestline wool coat",
-    price: "USD $420",
-    image: sale1,
-    hoverImage: sale1_hover,
-  },
-  {
-    name: "Aldgate leather gloves",
-    price: "USD $95",
-    image: sale2,
-    hoverImage: sale2_hover,
-  },
-  {
-    name: "Ember ribbed turtleneck",
-    price: "USD $145",
-    image: sale3,
-    hoverImage: sale3_hover,
-  },
-];
-
-const collections = [
-  { name: "The Midnight Blue Bouquet", image: sale3, hoverImage: sale3_hover },
-  { name: "Ember ribbed turtleneck", image: col1, hoverImage: col1_hov },
-  { name: "Ember ribbed turtleneck", image: col2, hoverImage: col2_hov },
-  { name: "Ember ribbed turtleneck", image: col3, hoverImage: col3_hov },
-];
-
-const CARD_DESC = `Perfect for : Graduation, Love,\nFriendship, Mother's day,\nValentines day, Birthday.`;
-
 // ─── Component ───────────────────────────────────────────────────────────────
 export const Home = () => {
   const [active, setActive] = useState(0);
   const [open, setOpen] = useState(0);
+
+  const { products: featuredProducts, loading: featuredLoading } =
+    useProducts();
+  const bestSellers = featuredProducts.slice(0, 3); // show first 3 as best sellers
+  const collectionItems = featuredProducts.slice(0, 4); // show first 4 as collection
 
   // Refs for sections used with useScrollAnimation
   const [bestSellerTitleRef, bestSellerTitleVisible] = useScrollAnimation(0.2);
@@ -304,21 +270,27 @@ export const Home = () => {
         </div>
 
         {/* Cards — staggered */}
-        <div id="shop" className="mt-7">
+        {featuredLoading ? (
+          <div className="flex h-48 mt-10 items-center justify-center text-sm text-muted-foreground">
+            Loading...
+          </div>
+        ) : (
           <StaggeredList
-            items={saleProducts}
+            items={bestSellers}
             animClass="anim-fade-up"
-            wrapperClass="grid grid-cols-1 gap-x-2 gap-y-12 md:grid-cols-3 md:gap-x-3"
+            wrapperClass="grid mt-10 grid-cols-1 gap-x-2 gap-y-12 md:grid-cols-3 md:gap-x-3"
             renderItem={(p) => (
-              <ProductCard
-                name={p.name}
-                price={p.price}
-                image={p.image}
-                hoverImage={p.hoverImage}
-              />
+              <Link to={`/shop/${p.id}`} key={p.id}>
+                <ProductCard
+                  name={p.name}
+                  price={`SGD $${p.price}`}
+                  image={resolveImageUrl(p.image_url)}
+                  hoverImage={resolveImageUrl(p.hover_img_url)}
+                />
+              </Link>
             )}
           />
-        </div>
+        )}
       </div>
 
       {/* ── Services ── */}
@@ -358,21 +330,26 @@ export const Home = () => {
           <h1 className="text-4xl capitalize font-inter">Collection</h1>
         </div>
 
-        <div id="shop" className="mt-7">
+        {featuredLoading ? (
+          <div className="flex h-48 mt-10 items-center justify-center text-sm text-muted-foreground">
+            Loading...
+          </div>
+        ) : (
           <StaggeredList
-            items={collections}
+            items={collectionItems}
             animClass="anim-scale-up"
-            wrapperClass="grid grid-cols-1 lg:grid-cols-4 gap-3"
+            wrapperClass="grid grid-cols-1 mt-20 lg:grid-cols-4 gap-3"
             renderItem={(c) => (
-              <CardCollection
-                name={c.name}
-                image={c.image}
-                hoverImage={c.hoverImage}
-                description={CARD_DESC}
-              />
+              <Link to={`/shop/${c.id}`} key={c.id}>
+                <CardCollection
+                  name={c.name}
+                  image={resolveImageUrl(c.image_url)}
+                  description={c.description}
+                />
+              </Link>
             )}
           />
-        </div>
+        )}
       </div>
 
       {/* ── Curved Arc ── */}

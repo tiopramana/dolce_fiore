@@ -11,6 +11,7 @@ import { Home } from "../pages/Home.jsx";
 import { Shop } from "../pages/ShopPage.jsx";
 import { Category } from "../pages/Category.jsx";
 import { ProductDetail } from "../pages/ProductDetail.jsx";
+import { OrderPage } from "../pages/OrderPage.jsx";
 import { NotFound } from "../pages/NotFound.jsx";
 
 import {
@@ -53,7 +54,8 @@ const router = createBrowserRouter([
       { path: "home", element: <Home /> },
       { path: "shop", element: <Shop /> },
       { path: "category", element: <Category /> },
-      { path: "product-detail", element: <ProductDetail /> },
+      { path: "shop/:id/order", element: <OrderPage /> },
+      { path: "shop/:id", element: <ProductDetail /> },
     ],
   },
 ]);

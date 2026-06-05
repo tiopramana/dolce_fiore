@@ -25,7 +25,7 @@ export function CardCollection({
       onMouseLeave={() => setHovered(false)}
     >
       {/* Image */}
-      <div className="relative aspect-[3/4] w-full overflow-hidden">
+      <div className="relative aspect-[4/6] w-full overflow-hidden">
         {/* Default image */}
         <img
           src={image}
