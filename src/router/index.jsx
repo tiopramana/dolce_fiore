@@ -9,7 +9,7 @@ import {
 
 import { Home } from "../pages/Home.jsx";
 import { Shop } from "../pages/ShopPage.jsx";
-import { Category } from "../pages/Category.jsx";
+import { AboutPage } from "../pages/AboutPage.jsx";
 import { ProductDetail } from "../pages/ProductDetail.jsx";
 import { OrderPage } from "../pages/OrderPage.jsx";
 import { NotFound } from "../pages/NotFound.jsx";
@@ -53,7 +53,7 @@ const router = createBrowserRouter([
       { index: true, element: <Home /> },
       { path: "home", element: <Home /> },
       { path: "shop", element: <Shop /> },
-      { path: "category", element: <Category /> },
+      { path: "about", element: <AboutPage /> },
       { path: "shop/:id/order", element: <OrderPage /> },
       { path: "shop/:id", element: <ProductDetail /> },
     ],

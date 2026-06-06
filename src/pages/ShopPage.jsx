@@ -2,6 +2,7 @@ import { useMemo, useState } from "react";
 import { Search } from "lucide-react";
 import { useSearchParams, Link } from "react-router-dom";
 import { Navbar } from "../components/layout/Navbar";
+import { Footer } from "../components/layout/Footer";
 import { ProductCard } from "../components/ui/ProductCard";
 import { Slider } from "../components/ui/Slider";
 import { useProducts } from "../hooks/useProducts";
@@ -249,6 +250,8 @@ export function Shop() {
           </section>
         </div>
       </div>
+
+      <Footer />
     </div>
   );
 }

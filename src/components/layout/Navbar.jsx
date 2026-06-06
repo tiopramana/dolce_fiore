@@ -4,7 +4,7 @@ import { Menu, MessageCircle, X } from "lucide-react";
 import { useCategories } from "../../hooks/useCategories";
 import shopFeature from "../../assets/shopfeature.png";
 
-const navItems = ["home", "shop", "about", "support", "blog"];
+const navItems = ["home", "shop", "about", "blog"];
 
 // Static shop quick links — always shown regardless of API
 const shopQuickLinks = [

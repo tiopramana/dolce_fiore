@@ -2,20 +2,18 @@ import { useEffect, useRef } from "react";
 import { ArrowRight } from "lucide-react";
 
 const PRODUCTS = [
-  "https://images.unsplash.com/photo-1561181286-d3fee7d55364?w=400&h=400&fit=crop", // roses
-  "https://images.unsplash.com/photo-1468327768560-75b778cbb551?w=400&h=400&fit=crop", // bouquet
-  "https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=400&h=400&fit=crop", // tulips
-  "https://images.unsplash.com/photo-1455656678494-4d1b5f3e7ad1?w=400&h=400&fit=crop", // flowers
-  "https://images.unsplash.com/photo-1526045612212-70caf35c14df?w=400&h=400&fit=crop", // pink flowers
-  "https://images.unsplash.com/photo-1462275646964-a0e3386b89fa?w=400&h=400&fit=crop", // sunflower
-  "https://images.unsplash.com/photo-1470509037663-253afd7f0f51?w=400&h=400&fit=crop", // bouquet
-  "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?w=400&h=400&fit=crop", // flower field
-  "https://images.unsplash.com/photo-1518895949257-7621c3c786d7?w=400&h=400&fit=crop", // roses
-  "https://images.unsplash.com/photo-1525310072745-f49212b5ac6d?w=400&h=400&fit=crop", // bouquet
-  "https://images.unsplash.com/photo-1457089328109-e5d9bd499191?w=400&h=400&fit=crop", // floral
-  "https://images.unsplash.com/photo-1519378058457-4c29a0a2efac?w=400&h=400&fit=crop", // flowers
-  "https://images.unsplash.com/photo-1526397751294-331021109fbd?w=400&h=400&fit=crop", // peonies
-  "https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?w=400&h=400&fit=crop", // bouquet
+  "https://images.unsplash.com/photo-1468327768560-75b778cbb551?w=400&h=400&fit=crop",
+  "https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=400&h=400&fit=crop",
+  "https://images.unsplash.com/photo-1525310072745-f49212b5ac6d?w=400&h=400&fit=crop",
+  "https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?w=400&h=400&fit=crop",
+  "https://images.unsplash.com/photo-1518895949257-7621c3c786d7?w=400&h=400&fit=crop",
+  "https://images.unsplash.com/photo-1526045612212-70caf35c14df?w=400&h=400&fit=crop",
+  "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?w=400&h=400&fit=crop",
+  "https://images.unsplash.com/photo-1520763185298-1b434c919102?w=400&h=400&fit=crop",
+  "https://images.unsplash.com/photo-1519378058457-4c29a0a2efac?w=400&h=400&fit=crop",
+  "https://images.unsplash.com/photo-1526397751294-331021109fbd?w=400&h=400&fit=crop",
+  "https://images.unsplash.com/photo-1457089328109-e5d9bd499191?w=400&h=400&fit=crop",
+  "https://images.unsplash.com/photo-1455656678494-4d1b5f3e7ad1?w=400&h=400&fit=crop",
 ];
 const SPEED = 0.04; // full loops per second — lower = slower marquee
 
