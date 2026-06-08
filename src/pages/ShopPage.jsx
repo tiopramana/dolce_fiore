@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { Search } from "lucide-react";
+import { Search, RotateCcw } from "lucide-react";
 import { useSearchParams, Link } from "react-router-dom";
 import { Navbar } from "../components/layout/Navbar";
 import { Footer } from "../components/layout/Footer";
@@ -119,7 +119,7 @@ export function Shop() {
                             setSelectedCategories([]);
                             setSearchParams({});
                           }}
-                          className="h-4 w-4 rounded-sm border-border accent-foreground bg-black"
+                          className="h-4 w-4 rounded-sm border-border accent-black"
                         />
                         All Products
                       </label>
@@ -131,7 +131,7 @@ export function Shop() {
                             type="checkbox"
                             checked={selectedCategories.includes(c.slug)}
                             onChange={() => toggle(c.slug)}
-                            className="h-4 w-4 rounded-sm border-border accent-foreground"
+                            className="h-4 w-4 rounded-sm border-border accent-black"
                           />
                           {c.name}
                         </label>
@@ -143,9 +143,21 @@ export function Shop() {
 
               {/* Price range */}
               <div className="border-t border-border pt-6">
-                <p className="mb-4 text-xs uppercase tracking-[0.18em] text-muted-foreground">
-                  Price range
-                </p>
+                <div className="mb-4 flex items-center justify-between">
+                  <p className="text-xs uppercase tracking-[0.18em] text-muted-foreground">
+                    Price range
+                  </p>
+
+                  <button
+                    onClick={() => setPriceRange([PRICE_MIN, PRICE_MAX])}
+                    className="flex items-center gap-1 text-xs text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
+                    title="Reset price filter"
+                  >
+                    <RotateCcw className="h-3.5 w-3.5" />
+                    Reset
+                  </button>
+                </div>
+
                 <Slider
                   value={priceRange}
                   onValueChange={(v) => setPriceRange([v[0], v[1]])}
@@ -154,6 +166,7 @@ export function Shop() {
                   step={5}
                   className="mt-2"
                 />
+
                 <div className="mt-3 flex justify-between text-xs text-muted-foreground">
                   <span>SGD ${priceRange[0]}</span>
                   <span>SGD ${priceRange[1]}</span>
