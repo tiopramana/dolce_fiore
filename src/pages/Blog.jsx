@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { ArrowUpRight } from "lucide-react";
 import { Navbar } from "../components/layout/Navbar";
+import { Footer } from "../components/layout/Footer";
 import blog1 from "../assets/col1.png";
 import blog2 from "../assets/col2.png";
 import blog3 from "../assets/col3.png";
@@ -127,6 +128,8 @@ export function BlogPage() {
           More stories coming soon
         </p>
       </div>
+
+      <Footer />
     </div>
   );
 }
@@ -134,7 +137,7 @@ export function BlogPage() {
 function FeaturedCard({ post }) {
   return (
     <a href="#" className="group col-span-1 block md:col-span-2">
-      <div className="relative aspect-[16/9] w-full overflow-hidden bg-muted">
+      <div className="relative aspect-[16/9] w-full overflow-hidden bg-muted shadow-[0px_7px_29px_0px_rgba(100,100,111,0.2)]">
         <img
           src={post.image}
           alt={post.title}
@@ -168,7 +171,7 @@ function FeaturedCard({ post }) {
 function SmallCard({ post }) {
   return (
     <a href="#" className="group block">
-      <div className="relative aspect-[4/3] w-full overflow-hidden bg-muted">
+      <div className="relative aspect-[4/3] w-full overflow-hidden bg-muted shadow-[0px_7px_29px_0px_rgba(100,100,111,0.2)]">
         <img
           src={post.image}
           alt={post.title}

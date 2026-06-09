@@ -66,7 +66,7 @@ export function Navbar() {
         </nav>
 
         {/* Right — icons */}
-        <div className="flex flex-1 justify-end items-center gap-4 tracking-tight">
+        <div className="flex flex-1 justify-end items-center gap-10 tracking-tight">
           <button
             className="md:hidden"
             aria-label="Toggle menu"
