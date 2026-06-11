@@ -36,6 +36,7 @@ export function Shop() {
     loading: productsLoading,
     error: productsError,
   } = useProducts();
+
   const { categories, loading: categoriesLoading } = useCategories();
 
   const toggle = (slug) => {
@@ -69,7 +70,6 @@ export function Shop() {
   return (
     <div className="relative min-h-screen bg-background">
       <Navbar />
-
       <div className="mx-auto max-w-400 px-6 pt-32 pb-20 md:px-10">
         <header className="mb-12 pl-0 md:pl-72">
           <h1 className="text-5xl font-semibold tracking-tight text-foreground md:text-6xl">
