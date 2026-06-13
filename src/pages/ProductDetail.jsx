@@ -95,7 +95,7 @@ export function ProductDetail() {
                     width={1600}
                     height={1800}
                     loading={i === 0 ? "eager" : "lazy"}
-                    className="h-auto w-full object-cover"
+                    className="h-auto w-auto object-cover"
                   />
                 </div>
               ))

@@ -38,11 +38,13 @@ export function AboutPage() {
             Our Mission
           </p>
           <h1 className="text-4xl font-semibold leading-tight tracking-tight text-foreground md:text-6xl">
-            Clothing that fits the life you actually live.
+            Creating handcrafted flowers that last beyond the moment.{" "}
           </h1>
           <p className="mt-5 text-sm text-muted-foreground md:text-base">
-            Get to know who we are, what we stand for, and why we love what we
-            do.
+            At Dolce Fiore, we believe every bouquet should tell a story.
+            Through carefully crafted crochet and wire flowers, we create
+            timeless gifts that celebrate life's special moments and become
+            cherished memories for years to come.
           </p>
         </div>
 
@@ -56,36 +58,39 @@ export function AboutPage() {
                   Our Story
                 </p>
                 <p className="max-w-xl text-lg leading-relaxed text-foreground md:text-xl">
-                  Cartelle began with a simple conviction: everyday clothing
-                  should feel as good as it looks. Founded in 2019, we set out
-                  to build a wardrobe of quiet, considered pieces — silhouettes
-                  that move with you, fabrics that soften with wear, and details
-                  that reveal themselves over time.
+                  Dolce Fiore began as a simple hobby and a way to spend time
+                  creatively at home. What started with a few handmade crochet
+                  flowers soon grew into a passion for creating meaningful gifts
+                  that bring joy to others. Today, every bouquet is carefully
+                  handcrafted with love, turning yarn and wire into timeless
+                  blooms that celebrate life's special moments.
                 </p>
               </div>
               <div className="mt-12 grid grid-cols-3 gap-6 border-t border-border pt-8">
                 <div>
                   <p className="text-3xl font-semibold tracking-tight text-foreground">
-                    6
+                    50+
                   </p>
                   <p className="mt-1 text-sm text-muted-foreground">
-                    Years crafting essentials
+                    Bouquets handcrafted
                   </p>
                 </div>
+
                 <div>
                   <p className="text-3xl font-semibold tracking-tight text-foreground">
-                    12
+                    20+
                   </p>
                   <p className="mt-1 text-sm text-muted-foreground">
-                    Artisan partners worldwide
+                    Happy customers
                   </p>
                 </div>
+
                 <div>
                   <p className="text-3xl font-semibold tracking-tight text-foreground">
                     100%
                   </p>
                   <p className="mt-1 text-sm text-muted-foreground">
-                    Traceable materials
+                    Handmade creations
                   </p>
                 </div>
               </div>
@@ -121,11 +126,12 @@ export function AboutPage() {
             <p className="mb-6 text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
               Materials
             </p>
-            <p className="text-sm leading-relaxed text-foreground">
-              We source the finest organic cotton, merino wool, and
-              vegetable-tanned leather. Every fabric is chosen for how it ages,
-              drapes, and feels against the skin — because the best pieces get
-              better with time.
+            <p className="text-base leading-relaxed text-foreground">
+              Our bouquets are handcrafted using high-quality crochet yarn and
+              flexible floral wire, carefully selected for their durability and
+              beauty. Each flower is shaped by hand, allowing us to create
+              elegant blooms that maintain their form and can be treasured for
+              years to come.
             </p>
           </div>
 
@@ -134,10 +140,11 @@ export function AboutPage() {
             <p className="mb-6 text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
               Sustainability
             </p>
-            <p className="text-sm leading-relaxed text-foreground">
-              Small-batch production, fair labor standards, and plastic-free
-              packaging dictate our model. We design collections that reduce
-              seasonal textile waste.
+            <p className="text-base leading-relaxed text-foreground">
+              Unlike fresh flowers that fade within days, our handcrafted
+              crochet bouquets are designed to last. By creating reusable floral
+              keepsakes, we offer a meaningful and long-lasting alternative that
+              can be enjoyed long after the special occasion has passed.
             </p>
           </div>
         </div>

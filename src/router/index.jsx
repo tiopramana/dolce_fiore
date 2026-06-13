@@ -13,7 +13,7 @@ import { AboutPage } from "../pages/AboutPage.jsx";
 import { ProductDetail } from "../pages/ProductDetail.jsx";
 import { OrderPage } from "../pages/OrderPage.jsx";
 import { NotFound } from "../pages/NotFound.jsx";
-import { BlogPage } from "../pages/Blog.jsx";
+import { BlogPage } from "../pages/News.jsx";
 
 import {
   LoadingScreen,
@@ -55,7 +55,7 @@ const router = createBrowserRouter([
       { path: "home", element: <Home /> },
       { path: "shop", element: <Shop /> },
       { path: "about", element: <AboutPage /> },
-      { path: "blog", element: <BlogPage /> },
+      { path: "news", element: <BlogPage /> },
       { path: "shop/:id/order", element: <OrderPage /> },
       { path: "shop/:id", element: <ProductDetail /> },
     ],

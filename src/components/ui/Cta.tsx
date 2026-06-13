@@ -1,4 +1,4 @@
-import { ArrowRight, Star } from "lucide-react";
+import { ArrowRight, Flower } from "lucide-react";
 import { Link } from "react-router-dom";
 
 export function CtaBanner() {
@@ -27,8 +27,10 @@ export function CtaBanner() {
 
         <div className="mt-6 flex items-center justify-center gap-3">
           <div className="flex items-center gap-2">
-            <span className="text-xs font-medium text-foreground md:text-sm">
-              230 Happy customers
+            <span className="text-xs flex justify-between font-medium text-foreground md:text-sm">
+              <Flower />
+              Happy customers
+              <Flower />
             </span>
           </div>
         </div>
