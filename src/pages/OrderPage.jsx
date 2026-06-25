@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useParams, useNavigate } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { ChevronDown, Copy, Check } from "lucide-react";
 import { Navbar } from "../components/layout/Navbar";
 import { useProduct } from "../hooks/useProduct";
@@ -15,7 +15,6 @@ const DELIVERY_OPTIONS = [
 
 export function OrderPage() {
   const { id } = useParams();
-  const navigate = useNavigate();
   const { product, loading, error } = useProduct(id);
 
   const [form, setForm] = useState({

@@ -1,23 +1,24 @@
 import { useFetch } from "./useFetch";
-import { getBlog } from "../services/blogService";
+import { getBlogById } from "../services/blogService";
 
 /**
- * Fetch all blog posts, optionally filtered by category slug.
+ * Fetch a single product by id.
+ * Used in ProductDetail page — reads :id from the route.
  *
- * @param {string} categorySlug — e.g. "craft", "style". Leave empty for all.
+ * @param {string|number} id — product id from URL params
  *
  * Usage:
- *   const { posts, loading, error } = useBlog();
- *   const { posts, loading, error } = useBlog("craft");
+ *   const { id } = useParams();
+ *   const { product, loading, error } = useProduct(id);
  */
-export function useBlog(categorySlug = "") {
+export function useBlog(id) {
   const { data, loading, error, refetch } = useFetch(
-    () => getBlog(categorySlug),
-    [categorySlug],
+    () => getBlogById(id),
+    [id],
   );
 
   return {
-    posts: data ?? [],
+    blog: data ?? null,
     loading,
     error,
     refetch,

@@ -3,14 +3,14 @@ import { ArrowUpRight } from "lucide-react";
 import { Navbar } from "../components/layout/Navbar";
 import { useSearchParams } from "react-router-dom";
 import { Footer } from "../components/layout/Footer";
-import { useBlog } from "../hooks/useBlog";
+import { useBlogs } from "../hooks/useBlogs";
 import { useCategories } from "../hooks/useCategories";
 import { resolveImageUrl } from "../services/api";
 
-export function BlogPage() {
+export function NewsPage() {
   const [searchParams, setSearchParams] = useSearchParams();
   const [query, setQuery] = useState("");
-  const { posts, loading, error } = useBlog();
+  const { posts, loading, error } = useBlogs();
   const { categories, loading: categoriesLoading } = useCategories();
 
   const categoryFromUrl = searchParams.get("category") || "";
@@ -165,7 +165,7 @@ export function BlogPage() {
 function FeaturedCard({ post }) {
   return (
     <a
-      href={`/blog/${post.id}`}
+      href={`/news/${post.id}`}
       className="group col-span-1 block md:col-span-2"
     >
       <div className="relative aspect-video w-full overflow-hidden bg-muted border border-gray-400">
@@ -207,7 +207,7 @@ function FeaturedCard({ post }) {
 
 function SmallCard({ post }) {
   return (
-    <a href={`/blog/${post.id}`} className="group block">
+    <a href={`/news/${post.id}`} className="group block">
       <div className="relative aspect-4/3 w-full overflow-hidden bg-muted border border-gray-400">
         <img
           src={resolveImageUrl(post.image_url)}
@@ -244,4 +244,4 @@ function SmallCard({ post }) {
   );
 }
 
-export default BlogPage;
+export default NewsPage;
