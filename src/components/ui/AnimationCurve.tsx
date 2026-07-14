@@ -13,7 +13,6 @@ const PRODUCTS = [
   "https://images.unsplash.com/photo-1519378058457-4c29a0a2efac?w=400&h=400&fit=crop",
   "https://images.unsplash.com/photo-1526397751294-331021109fbd?w=400&h=400&fit=crop",
   "https://images.unsplash.com/photo-1457089328109-e5d9bd499191?w=400&h=400&fit=crop",
-  "https://images.unsplash.com/photo-1455656678494-4d1b5f3e7ad1?w=400&h=400&fit=crop",
 ];
 const SPEED = 0.04; // full loops per second — lower = slower marquee
 
