@@ -1,3 +1,4 @@
+import Logo from "../../assets/favicon.jpg";
 export function Footer() {
   return (
     <footer className="border py-12 px-4 sm:px-6 lg:px-8 mt-50 border-gray-300">
@@ -6,7 +7,7 @@ export function Footer() {
           <div className="w-full md:w-[45%] lg:w-[35%] flex flex-col items-center md:items-start text-center md:text-left">
             <a href="/">
               <div className="flex items-center">
-                <img src="../public/favicon.jpg" alt="" className="w-20 h-20" />
+                <img src={Logo} alt="" className="w-20 h-20" />
                 <span className="px-6 text-xl">Dolce Fiore</span>
               </div>
             </a>
