@@ -319,7 +319,7 @@ export const Home = () => {
       {/* ── Collection ── */}
       <div
         id="collection"
-        className="mt-20 mx-auto max-w-400 items-center justify-between px-10 py-8"
+        className="hidden md:block mt-20 mx-auto max-w-400 items-center justify-between px-10 py-8"
       >
         <div
           ref={collectionTitleRef}
@@ -355,7 +355,7 @@ export const Home = () => {
       {/* ── Curved Arc ── */}
       <div
         ref={curvedRef}
-        className={`anim-fade-up mt-23 mx-auto items-center justify-between px-10 py-8 overflow-hidden border-b border-gray-300 ${
+        className={`hidden md:block anim-fade-up mt-23 mx-auto items-center justify-between px-10 py-8 overflow-hidden border-b border-gray-300 ${
           curvedVisible ? "anim-visible" : ""
         }`}
       >
@@ -387,7 +387,7 @@ export const Home = () => {
             <img
               src={col2}
               alt="Flowers"
-              className="lg:h-[70%] w-full h-full rounded-3xl object-cover"
+              className="hidden md:block lg:h-[70%] w-full h-full rounded-3xl object-cover"
             />
           </div>
 
