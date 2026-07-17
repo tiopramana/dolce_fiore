@@ -223,12 +223,12 @@ export const Home = () => {
               <p className="hero-desc text-base text-white">
                 {slides[active].description}
               </p>
-              <Link
-                to="/shop"
+              <a
+                href="/shop"
                 className="hero-btn md:mb-0 mb-40 inline-flex mt-5 items-center justify-center bg-white px-10 py-4 text-xs font-medium uppercase tracking-[0.2em] text-foreground transition-all hover:bg-black hover:text-white"
               >
                 Shop Now
-              </Link>
+              </a>
             </div>
 
             <div className="hero-dots absolute bottom-6 left-1/2 flex -translate-x-1/2 items-center gap-2">
@@ -262,7 +262,7 @@ export const Home = () => {
             Best Sales
           </h1>
           <a
-            href="#shop"
+            href="/shop"
             className="inline-flex items-center justify-center border bg-white px-4 py-3 text-xs font-medium uppercase tracking-[0.2em] text-foreground transition-colors hover:bg-white/80 sm:w-auto"
           >
             View More
