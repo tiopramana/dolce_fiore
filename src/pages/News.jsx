@@ -1,7 +1,7 @@
 import { useState, useMemo } from "react";
 import { ArrowUpRight } from "lucide-react";
 import { Navbar } from "../components/layout/Navbar";
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams, Link } from "react-router-dom";
 import { Footer } from "../components/layout/Footer";
 import { useBlogs } from "../hooks/useBlogs";
 import { useCategories } from "../hooks/useCategories";
@@ -30,7 +30,7 @@ export function NewsPage() {
     }
   };
 
-  // featured post: first post with is_featured=1, or fallback to first post
+  // featured posts: first posts with is_featured=1, or fallback to first posts
   const filtered = useMemo(() => {
     return posts.filter((p) => {
       if (query && !p.name.toLowerCase().includes(query.toLowerCase()))
@@ -66,7 +66,7 @@ export function NewsPage() {
         <div className="mb-8">
           <input
             type="text"
-            placeholder="Search posts..."
+            placeholder="Search postss..."
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             className="w-full max-w-md rounded-lg border border-border bg-background px-4 py-2 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-foreground"
@@ -116,29 +116,29 @@ export function NewsPage() {
         {/* Loading */}
         {loading && (
           <div className="flex h-64 items-center justify-center text-sm text-muted-foreground">
-            Loading posts...
+            Loading postss...
           </div>
         )}
 
         {/* Error */}
         {error && (
           <div className="flex h-64 items-center justify-center text-sm text-red-400">
-            Failed to load posts. Please try again.
+            Failed to load postss. Please try again.
           </div>
         )}
 
         {/* Empty */}
         {!loading && !error && filtered.length === 0 && (
           <div className="flex h-64 items-center justify-center text-sm text-muted-foreground">
-            No posts in this category yet.
+            No postss in this category yet.
           </div>
         )}
 
-        {/* Featured + first secondary post */}
+        {/* Featured + first secondary posts */}
         {!loading && !error && featured && (
           <div className="mt-12 grid grid-cols-1 gap-10 md:grid-cols-3 md:gap-8">
-            <FeaturedCard post={featured} />
-            {rest[0] && <SmallCard post={rest[0]} />}
+            <FeaturedCard posts={featured} />
+            {rest[0] && <SmallCard posts={rest[0]} />}
           </div>
         )}
 
@@ -146,7 +146,7 @@ export function NewsPage() {
         {!loading && !error && rest.length > 1 && (
           <div className="mt-16 grid grid-cols-1 gap-10 md:grid-cols-3 md:gap-8">
             {rest.slice(1).map((p) => (
-              <SmallCard key={p.id} post={p} />
+              <SmallCard key={p.id} posts={p} />
             ))}
           </div>
         )}
@@ -162,16 +162,16 @@ export function NewsPage() {
   );
 }
 
-function FeaturedCard({ post }) {
+function FeaturedCard({ posts }) {
   return (
-    <a
-      href={`/news/${post.id}`}
+    <Link
+      to={`/news/${posts.id}`}
       className="group col-span-1 block md:col-span-2"
     >
       <div className="relative aspect-video w-full overflow-hidden bg-muted border border-gray-400">
         <img
-          src={resolveImageUrl(post.image_url)}
-          alt={post.name}
+          src={resolveImageUrl(posts.image_url)}
+          alt={posts.name}
           width={1280}
           height={720}
           className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.02]"
@@ -179,39 +179,39 @@ function FeaturedCard({ post }) {
         <div className="absolute inset-x-0 bottom-0 flex items-center justify-between bg-background/85 px-5 py-3 backdrop-blur-sm">
           <div className="text-xs text-foreground">
             <p className="font-medium text-white">
-              {new Date(post.published_at).toLocaleDateString("en-GB", {
+              {new Date(posts.published_at).toLocaleDateString("en-GB", {
                 day: "numeric",
                 month: "short",
                 year: "numeric",
               })}
             </p>
-            <p className="text-muted-foreground">{post.read_time}</p>
+            <p className="text-muted-foreground">{posts.read_time}</p>
           </div>
           <p className="text-xs uppercase tracking-[0.16em] text-foreground">
-            {post.category}
+            {posts.category}
           </p>
         </div>
       </div>
       <h2 className="mt-6 text-2xl font-semibold tracking-tight text-foreground md:text-3xl">
-        {post.name}
+        {posts.name}
       </h2>
       <p className="mt-3 max-w-xl text-sm text-muted-foreground">
-        {post.description}
+        {posts.description}
       </p>
       <span className="mt-5 inline-flex items-center gap-1 text-sm text-foreground transition-opacity group-hover:opacity-60">
-        Read Post <ArrowUpRight className="h-4 w-4" strokeWidth={1.5} />
+        Read posts <ArrowUpRight className="h-4 w-4" strokeWidth={1.5} />
       </span>
-    </a>
+    </Link>
   );
 }
 
-function SmallCard({ post }) {
+function SmallCard({ posts }) {
   return (
-    <a href={`/news/${post.id}`} className="group block">
+    <Link to={`/news/${posts.id}`} className="group block">
       <div className="relative aspect-4/3 w-full overflow-hidden bg-muted border border-gray-400">
         <img
-          src={resolveImageUrl(post.image_url)}
-          alt={post.title}
+          src={resolveImageUrl(posts.image_url)}
+          alt={posts.title}
           width={1024}
           height={768}
           loading="lazy"
@@ -220,27 +220,27 @@ function SmallCard({ post }) {
         <div className="absolute inset-x-0 bottom-0 flex items-center justify-between bg-background/85 px-4 py-3 backdrop-blur-sm">
           <div className="text-[11px] text-foreground">
             <p className="font-medium text-white">
-              {new Date(post.published_at).toLocaleDateString("en-GB", {
+              {new Date(posts.published_at).toLocaleDateString("en-GB", {
                 day: "numeric",
                 month: "short",
                 year: "numeric",
               })}
             </p>
-            <p className="text-muted-foreground">{post.read_time}</p>
+            <p className="text-muted-foreground">{posts.read_time}</p>
           </div>
           <p className="text-[11px] uppercase tracking-[0.16em] text-foreground">
-            {post.category}
+            {posts.category}
           </p>
         </div>
       </div>
       <h3 className="mt-5 text-lg font-semibold tracking-tight text-foreground">
-        {post.name}
+        {posts.name}
       </h3>
-      <p className="mt-2 text-sm text-muted-foreground">{post.description}</p>
+      <p className="mt-2 text-sm text-muted-foreground">{posts.description}</p>
       <span className="mt-4 inline-flex items-center gap-1 text-sm text-foreground transition-opacity group-hover:opacity-60">
-        Read Post <ArrowUpRight className="h-4 w-4" strokeWidth={1.5} />
+        Read posts <ArrowUpRight className="h-4 w-4" strokeWidth={1.5} />
       </span>
-    </a>
+    </Link>
   );
 }
 

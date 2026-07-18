@@ -197,7 +197,7 @@ export function Shop() {
           {/* Product grid */}
           <section className="flex-1">
             {/* ── Custom order banner above grid ── */}
-            <div className="mb-8 flex items-center justify-between border border-border px-5 py-4">
+            <div className="hidden md:flex mb-8 items-center justify-between border border-border px-5 py-4">
               <div>
                 <p className="text-sm font-medium text-foreground">
                   Want a custom arrangement?

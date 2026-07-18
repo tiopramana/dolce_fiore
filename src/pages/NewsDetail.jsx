@@ -54,76 +54,90 @@ export function NewsDetail() {
   return (
     <div className="relative min-h-screen bg-background">
       <Navbar />
-      <div className="mx-auto max-w-400 px-6 pt-32 pb-20 md:px-10">
-        <nav className="mb-8 text-sm text-muted-foreground">
-          <Link to="/shop" className="hover:text-foreground">
-            Shop
+
+      <article className="mx-auto max-w-[800px] px-6 pt-32 pb-20">
+        {/* Breadcrumbs & Category */}
+        <nav className="mb-6 flex items-center gap-2 text-xs uppercase tracking-wider text-muted-foreground">
+          <Link to="/news" className="hover:text-foreground transition-colors">
+            News
           </Link>
-          <span className="mx-2">/</span>
+          <span>/</span>
           {blog.category_name && (
             <>
-              <span>{blog.category_name}</span>
-              <span className="mx-2">/</span>
+              <span className="text-foreground font-medium">
+                {blog.category_name}
+              </span>
+              <span>/</span>
             </>
           )}
-          <span className="text-foreground">{blog.name}</span>
         </nav>
 
-        <div className="flex flex-col gap-12 md:flex-row md:gap-16">
-          {/* blog images */}
-          <section className="flex-1 space-y-3">
-            {blog.images && blog.images.length > 0 ? (
-              blog.images.map((img, i) => (
-                <div
+        {/* Header Section */}
+        <header className="mb-10">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold tracking-tight text-foreground leading-[1.15]">
+            {blog.name}
+          </h1>
+
+          {/* Article Metadata */}
+          <div className="mt-6 flex items-center gap-4 border-y border-border py-3 text-sm text-muted-foreground">
+            {blog.created_at && (
+              <time dateTime={blog.created_at}>
+                {new Date(blog.created_at).toLocaleDateString("en-US", {
+                  day: "numeric",
+                  month: "long",
+                  year: "numeric",
+                })}
+              </time>
+            )}
+            <span className="w-1 h-1 rounded-full bg-muted-foreground/40" />
+            <span>By Editorial Team</span>
+          </div>
+        </header>
+
+        {/* Hero Image */}
+        <figure className="mb-10 overflow-hidden rounded-sm bg-muted">
+          <img
+            src={resolveImageUrl(
+              blog.image_url || (blog.images && blog.images[0]),
+            )}
+            alt={blog.name}
+            width={1600}
+            height={900}
+            loading="eager"
+            className="w-full h-auto max-h-[500px] object-cover"
+          />
+        </figure>
+
+        {/* Article Body Content */}
+        <div className="prose prose-neutral dark:prose-invert max-w-none">
+          {blog.description && (
+            <p className="text-lg md:text-xl font-normal leading-relaxed text-foreground/90 font-serif mb-6 first-letter:text-5xl first-letter:font-bold first-letter:float-left first-letter:mr-3 first-letter:mt-1">
+              {blog.description}
+            </p>
+          )}
+
+          {/* Supporting Images Gallery if multiple exist */}
+          {blog.images && blog.images.length > 1 && (
+            <div className="my-10 grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {blog.images.slice(1).map((img, i) => (
+                <figure
                   key={i}
-                  className="relative w-full overflow-hidden bg-muted"
+                  className="overflow-hidden rounded-sm bg-muted m-0"
                 >
                   <img
                     src={resolveImageUrl(img)}
-                    alt={`${blog.name} view ${i + 1}`}
-                    width={1600}
-                    height={1800}
-                    loading={i === 0 ? "eager" : "lazy"}
-                    className="h-auto w-auto object-cover"
+                    alt={`${blog.name} supporting view ${i + 1}`}
+                    width={800}
+                    height={600}
+                    loading="lazy"
+                    className="w-full h-48 md:h-64 object-cover"
                   />
-                </div>
-              ))
-            ) : (
-              <div className="relative w-full overflow-hidden bg-muted">
-                <img
-                  src={resolveImageUrl(blog.image_url)}
-                  alt={blog.name}
-                  width={1600}
-                  height={1800}
-                  loading="eager"
-                  className="h-auto w-full object-cover"
-                />
-              </div>
-            )}
-          </section>
-
-          {/* Sticky right sidebar */}
-          <aside className="md:w-[22rem] md:flex-shrink-0">
-            <div className="md:sticky md:top-28">
-              {blog.category_name && (
-                <span className="text-xs uppercase tracking-[0.18em] text-muted-foreground">
-                  {blog.category_name}
-                </span>
-              )}
-
-              <h1 className="mt-2 text-3xl font-semibold tracking-tight text-foreground">
-                {blog.name}
-              </h1>
-
-              {blog.description && (
-                <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-                  {blog.description}
-                </p>
-              )}
+                </figure>
+              ))}
             </div>
-          </aside>
+          )}
         </div>
-      </div>
+      </article>
     </div>
   );
 }

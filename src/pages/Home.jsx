@@ -261,12 +261,12 @@ export const Home = () => {
           <h1 className="text-3xl md:text-4xl font-inter capitalize">
             Best Sales
           </h1>
-          <a
-            href="/shop"
+          <Link
+            to="/shop"
             className="inline-flex items-center justify-center border bg-white px-4 py-3 text-xs font-medium uppercase tracking-[0.2em] text-foreground transition-colors hover:bg-white/80 sm:w-auto"
           >
             View More
-          </a>
+          </Link>
         </div>
 
         {/* Cards — staggered */}
@@ -305,7 +305,7 @@ export const Home = () => {
                 key={i}
                 className={`anim-fade-left stagger-${i + 1} ${serviceVisible ? "anim-visible" : ""}`}
               >
-                <span className="text-sm text-gray-300">{s.num}</span>
+                <span className="text-sm text-gray-400">{s.num}</span>
                 <h2 className="py-4 text-2xl font-medium">{s.title}</h2>
                 <p className="text-sm leading-relaxed text-gray-500">
                   {s.desc}
@@ -319,7 +319,7 @@ export const Home = () => {
       {/* ── Collection ── */}
       <div
         id="collection"
-        className="mt-20 mx-auto max-w-400 items-center justify-between px-10 py-8"
+        className="hidden md:block mt-20 mx-auto max-w-400 items-center justify-between px-10 py-8"
       >
         <div
           ref={collectionTitleRef}
@@ -355,7 +355,7 @@ export const Home = () => {
       {/* ── Curved Arc ── */}
       <div
         ref={curvedRef}
-        className={`anim-fade-up mt-23 mx-auto items-center justify-between px-10 py-8 overflow-hidden border-b border-gray-300 ${
+        className={`hidden md:block anim-fade-up mt-23 mx-auto items-center justify-between px-10 py-8 overflow-hidden border-b border-gray-300 ${
           curvedVisible ? "anim-visible" : ""
         }`}
       >
@@ -363,7 +363,7 @@ export const Home = () => {
       </div>
 
       {/* ── FAQ ── */}
-      <div className="mx-auto max-w-400 px-6 md:px-10 py-20">
+      <div id="faq" className="mx-auto max-w-400 px-6 md:px-10 py-20">
         {/* Heading */}
         <div
           ref={faqTitleRef}
@@ -387,7 +387,7 @@ export const Home = () => {
             <img
               src={col2}
               alt="Flowers"
-              className="lg:h-[70%] w-full h-full rounded-3xl object-cover"
+              className="hidden md:block lg:h-[70%] w-full h-full rounded-3xl object-cover"
             />
           </div>
 
