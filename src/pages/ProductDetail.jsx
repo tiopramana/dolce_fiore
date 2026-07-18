@@ -126,11 +126,11 @@ export function ProductDetail() {
                 {product.name}
               </h1>
 
-              {product.description && (
+              {/* {product.description && (
                 <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
                   {product.description}
                 </p>
-              )}
+              )} */}
 
               {/* ── Primary: Order Now ── */}
               <button
