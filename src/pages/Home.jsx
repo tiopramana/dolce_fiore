@@ -223,12 +223,12 @@ export const Home = () => {
               <p className="hero-desc text-base text-white">
                 {slides[active].description}
               </p>
-              <a
-                href="/shop"
+              <Link
+                to="/shop"
                 className="hero-btn md:mb-0 mb-40 inline-flex mt-5 items-center justify-center bg-white px-10 py-4 text-xs font-medium uppercase tracking-[0.2em] text-foreground transition-all hover:bg-black hover:text-white"
               >
                 Shop Now
-              </a>
+              </Link>
             </div>
 
             <div className="hero-dots absolute bottom-6 left-1/2 flex -translate-x-1/2 items-center gap-2">
