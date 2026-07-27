@@ -36,7 +36,7 @@ export function CtaBanner() {
         </div>
 
         <Link to={"/shop"}>
-          <button className="mt-6 inline-flex items-center gap-2  bg-foreground px-6 py-2.5 text-sm font-medium text-background transition-transform hover:scale-105 outline hover:cursor-pointer">
+          <button className="mt-6 inline-flex items-center gap-2  bg-foreground px-6 py-2.5 text-sm font-medium transition-transform hover:scale-105 outline hover:cursor-pointer">
             Store
             <ArrowRight className="h-4 w-4" />
           </button>

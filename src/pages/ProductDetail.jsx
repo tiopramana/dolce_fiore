@@ -87,7 +87,7 @@ export function ProductDetail() {
               product.images.map((img, i) => (
                 <div
                   key={i}
-                  className="relative w-full overflow-hidden bg-muted"
+                  className="relative flex items-center justify-center overflow-hidden rounded-2xl"
                 >
                   <img
                     src={resolveImageUrl(img)}
@@ -100,14 +100,14 @@ export function ProductDetail() {
                 </div>
               ))
             ) : (
-              <div className="relative w-full overflow-hidden bg-muted">
+              <div className="relative w-full overflow-hidden">
                 <img
                   src={resolveImageUrl(product.image_url)}
                   alt={product.name}
                   width={1600}
                   height={1800}
                   loading="eager"
-                  className="h-auto w-full object-cover"
+                  className="h-full w-full object-cover"
                 />
               </div>
             )}

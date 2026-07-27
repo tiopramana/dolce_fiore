@@ -152,11 +152,11 @@ export function OrderPage() {
                   <h2 className="mt-1 text-lg font-semibold text-foreground">
                     {product.name}
                   </h2>
-                  {product.description && (
+                  {/* {product.description && (
                     <p className="mt-2 text-sm leading-relaxed text-muted-foreground line-clamp-3">
                       {product.description}
                     </p>
-                  )}
+                  )} */}
                 </div>
               </div>
             </div>

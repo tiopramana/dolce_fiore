@@ -1,17 +1,30 @@
-@import "tailwindcss";
+/* 1. All @import rules must be at the very top */
 @import url("https://fonts.googleapis.com/css2?family=Jersey+15&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Manrope:wght@200..800&family=Momo+Trust+Display&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
-/* Global styles */
+@import "tailwindcss";
+
+/* 2. Register your fonts inside Tailwind v4's theme block */
+/* 2. Register your fonts and colors inside Tailwind v4's theme block */
+@theme {
+  --font-manrope: "Manrope", sans-serif;
+  --font-jersey: "Jersey 15", sans-serif;
+  --font-lato: "Lato", sans-serif;
+  --font-montserrat: "Montserrat", sans-serif;
+
+  /* TAMBAHKAN WARNA BACKGROUND DI SINI */
+  --color-background: #ffffff; /* Ubah hex code ini sesuai kebutuhan */
+}
+
+/* 3. Global styles and utilities */
 html,
 body,
 #root {
   height: 100%;
-  font-family: "Manrope", sans-serif;
+  font-family: var(--font-manrope);
   font-optical-sizing: auto;
   font-style: normal;
   overflow-x: hidden;
 }
 
 body {
-  @apply bg-[#FFFCFB] text-gray-900;
-  @apply scroll-m-5;
+  @apply bg-white text-gray-900 scroll-m-5;
 }

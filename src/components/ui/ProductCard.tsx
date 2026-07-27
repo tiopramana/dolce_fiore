@@ -23,7 +23,7 @@ export function ProductCard({ name, price, image }: ProductCardProps) {
           height={1000}
           loading="lazy"
           className={`absolute inset-0 h-full w-full object-cover transition-all duration-700 ease-out ${
-            hovered ? "opacity-80 brightness-100" : "opacity-100 brightness-80"
+            hovered ? "opacity-80 brightness-70" : "opacity-90 brightness-60"
           }`}
         />
       </div>
