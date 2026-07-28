@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { Link, useParams } from "react-router-dom";
 import { ChevronDown, Copy, Check } from "lucide-react";
 import { Navbar } from "../components/layout/Navbar";
@@ -66,6 +66,12 @@ export function OrderPage() {
     setSubmitted(true);
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
+
+  const minDate = useMemo(() => {
+    const date = new Date();
+    date.setDate(date.getDate() + 2);
+    return date.toISOString().split("T")[0];
+  });
 
   async function handleCopy() {
     try {
@@ -274,11 +280,7 @@ export function OrderPage() {
                       name="date"
                       value={form.date}
                       onChange={handleChange}
-                      min={
-                        new Date(Date.now() + 2 * 24 * 60 * 60 * 1000)
-                          .toISOString()
-                          .split("T")[0]
-                      }
+                      min={minDate}
                       className="w-full border border-border bg-transparent px-4 py-3 text-sm text-foreground focus:border-foreground/40 focus:outline-none"
                     />
                     <p className="mt-1 text-xs text-muted-foreground">

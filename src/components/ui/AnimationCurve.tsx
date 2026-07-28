@@ -133,7 +133,7 @@ export function CurvedProductArc() {
           </p>
 
           <a
-            href="#shop"
+            href="/shop"
             className="inline-flex mt-5 items-center justify-center bg-white px-10 py-4 text-xs font-medium uppercase tracking-[0.2em] text-foreground transition-colors hover:bg-white/80 outline-1"
           >
             Shop Now
