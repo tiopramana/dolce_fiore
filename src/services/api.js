@@ -5,6 +5,7 @@ const BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:3000";
 /**
  * Base fetch wrapper — handles errors consistently
  */
+
 export async function apiFetch(path) {
   const res = await fetch(`${BASE_URL}/api${path}`);
 
@@ -25,8 +26,9 @@ export async function apiFetch(path) {
  * Production  : image_url = "https://res.cloudinary.com/yourshop/rose.jpg"
  *               → already a full URL, returned as-is
  */
+
 export function resolveImageUrl(imageUrl) {
   if (!imageUrl) return "/placeholder.png";
   if (imageUrl.startsWith("http")) return imageUrl; // already a full URL (production)
-  return `/uploads/${imageUrl}`; // local dev — served from public/uploads/
+  return `${BASE_URL}/uploads/${imageUrl}`; // local dev — served from public/uploads/
 }
