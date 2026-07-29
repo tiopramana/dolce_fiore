@@ -87,7 +87,7 @@ export function ProductDetail() {
               product.images.map((img, i) => (
                 <div
                   key={i}
-                  className="relative flex items-center justify-center overflow-hidden rounded-2xl"
+                  className="relative flex items-center justify-center overflow-hidden"
                 >
                   <img
                     src={resolveImageUrl(img)}
