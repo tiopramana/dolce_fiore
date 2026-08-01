@@ -367,7 +367,7 @@ export const Home = () => {
         {/* Heading */}
         <div
           ref={faqTitleRef}
-          className={`anim-fade-up mb-14 ${faqTitleVisible ? "anim-visible" : ""}`}
+          className={`anim-fade-up mb-0 md:mb-14 ${faqTitleVisible ? "anim-visible" : ""}`}
         >
           <h2 className="text-4xl font-medium text-black">
             Frequently Asked Questions
@@ -378,7 +378,7 @@ export const Home = () => {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-16">
+        <div className="grid lg:grid-cols-2 gap-0 lg:gap-16">
           {/* Image — slides in from left */}
           <div
             ref={faqImageRef}
