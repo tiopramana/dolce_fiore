@@ -1,6 +1,6 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useRef } from "react";
 import { Link, useParams } from "react-router-dom";
-import { ChevronDown, Copy, Check } from "lucide-react";
+import { ChevronDown, Copy, Check, Calendar } from "lucide-react";
 import { Navbar } from "../components/layout/Navbar";
 import { useProduct } from "../hooks/useProduct";
 import { resolveImageUrl } from "../services/api";
@@ -16,6 +16,19 @@ const DELIVERY_OPTIONS = [
 export function OrderPage() {
   const { id } = useParams();
   const { product, loading, error } = useProduct(id);
+
+  const dateInputRef = useRef(null);
+
+  const openDatePicker = () => {
+    const input = dateInputRef.current;
+    if (!input) return;
+    if (typeof input.showPicker() === "function") {
+      input.showPicker;
+    } else {
+      input.focus();
+      input.click();
+    }
+  };
 
   const [form, setForm] = useState({
     name: "",
@@ -275,14 +288,23 @@ export function OrderPage() {
                       Preferred Collection / Delivery Date{" "}
                       <span className="text-red-400">*</span>
                     </label>
-                    <input
-                      type="date"
-                      name="date"
-                      value={form.date}
-                      onChange={handleChange}
-                      min={minDate}
-                      className="w-full border border-border bg-transparent px-4 py-3 text-sm text-foreground focus:border-foreground/40 focus:outline-none"
-                    />
+
+                    <div
+                      className="relative w-full border border-border bg-transparent focus-within:border-foreground/40 cursor-pointer"
+                      onClick={openDatePicker}
+                    >
+                      <input
+                        ref={dateInputRef}
+                        type="date"
+                        name="date"
+                        value={form.date}
+                        onChange={handleChange}
+                        min={minDate}
+                        className="w-full appearance-none bg-transparent px-4 py-3 pr-10 text-sm text-foreground focus:outline-none [&::-webkit-calendar-picker-indicator]:opacity-0 [&::-webkit-calendar-picker-indicator]:absolute [&::-webkit-calendar-picker-indicator]:right-0 [&::-webkit-calendar-picker-indicator]:w-full [&::-webkit-calendar-picker-indicator]:h-full [&::-webkit-calendar-picker-indicator]:cursor-pointer"
+                      />
+                      <Calendar className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                    </div>
+
                     <p className="mt-1 text-xs text-muted-foreground">
                       Please order at least 2–5 days in advance.
                     </p>
