@@ -11,7 +11,7 @@ export function ProductCard({ name, price, image }: ProductCardProps) {
 
   return (
     <div
-      className="group relative"
+      className="group relative border border-gray-400/30 p-3"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
