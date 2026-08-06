@@ -39,17 +39,17 @@ export function Shop() {
 
   const { categories, loading: categoriesLoading } = useCategories();
 
-  const toggle = (slug) => {
-    const next = selectedCategories.includes(slug)
-      ? selectedCategories.filter((x) => x !== slug)
-      : [...selectedCategories, slug];
-    setSelectedCategories(next);
-    if (next.length === 1) {
-      setSearchParams({ category: next[0] });
-    } else {
-      setSearchParams({});
-    }
-  };
+  // const toggle = (slug) => {
+  //   const next = selectedCategories.includes(slug)
+  //     ? selectedCategories.filter((x) => x !== slug)
+  //     : [...selectedCategories, slug];
+  //   setSelectedCategories(next);
+  //   if (next.length === 1) {
+  //     setSearchParams({ category: next[0] });
+  //   } else {
+  //     setSearchParams({});
+  //   }
+  // };
 
   const filtered = useMemo(() => {
     return products.filter((p) => {
@@ -130,7 +130,10 @@ export function Shop() {
                           <input
                             type="checkbox"
                             checked={selectedCategories.includes(c.slug)}
-                            onChange={() => toggle(c.slug)}
+                            onChange={() => {
+                              setSelectedCategories(c.slug);
+                              setSearchParams({ category: c.slug });
+                            }}
                             className="h-4 w-4 rounded-sm border-border accent-black"
                           />
                           {c.name}
