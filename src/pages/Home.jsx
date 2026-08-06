@@ -14,6 +14,8 @@ import { Link } from "react-router-dom";
 
 import hero1 from "../assets/hero1.png";
 import hero2 from "../assets/hero2.png";
+import hero3 from "../assets/hero3.png";
+import hero4 from "../assets/hero4.png";
 import col2 from "../assets/col2.png";
 
 // ─── Animation CSS (injected once) ──────────────────────────────────────────
@@ -104,6 +106,18 @@ const slides = [
     image: hero2,
     title: "Preordered",
     description: "Slowly Crafted with Love. Pre-Order Your Custom Blooms Now.",
+  },
+  {
+    image: hero3,
+    title: "Custom Bouquet",
+    description:
+      "Designed Just for You. Create a Personalized Bouquet for Every Special Moment.",
+  },
+  {
+    image: hero4,
+    title: "Timeless Gift",
+    description:
+      "Beautiful Handmade Flowers That Stay Vibrant and Memorable for Years to Come.",
   },
 ];
 

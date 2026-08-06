@@ -42,7 +42,7 @@ export function AboutPage() {
           </h1>
           <p className="mt-5 text-sm text-muted-foreground md:text-base">
             At Dolce Fiore, we believe every bouquet should tell a story.
-            Through carefully crafted crochet and wire flowers, we create
+            Through carefully crafted Chenille stem and wire flowers, we create
             timeless gifts that celebrate life's special moments and become
             cherished memories for years to come.
           </p>
@@ -59,11 +59,11 @@ export function AboutPage() {
                 </p>
                 <p className="max-w-xl text-lg leading-relaxed text-foreground md:text-xl">
                   Dolce Fiore began as a simple hobby and a way to spend time
-                  creatively at home. What started with a few handmade crochet
-                  flowers soon grew into a passion for creating meaningful gifts
-                  that bring joy to others. Today, every bouquet is carefully
-                  handcrafted with love, turning yarn and wire into timeless
-                  blooms that celebrate life's special moments.
+                  creatively at home. What started with a few handmade Chenille
+                  stem flowers soon grew into a passion for creating meaningful
+                  gifts that bring joy to others. Today, every bouquet is
+                  carefully handcrafted with love, turning yarn and wire into
+                  timeless blooms that celebrate life's special moments.
                 </p>
               </div>
               <div className="mt-12 grid grid-cols-3 gap-6 border-t border-border pt-8">
@@ -127,9 +127,9 @@ export function AboutPage() {
               Materials
             </p>
             <p className="text-base leading-relaxed text-foreground">
-              Our bouquets are handcrafted using high-quality crochet yarn and
-              flexible floral wire, carefully selected for their durability and
-              beauty. Each flower is shaped by hand, allowing us to create
+              Our bouquets are handcrafted using high-quality Chenille stem yarn
+              and flexible floral wire, carefully selected for their durability
+              and beauty. Each flower is shaped by hand, allowing us to create
               elegant blooms that maintain their form and can be treasured for
               years to come.
             </p>
@@ -142,9 +142,10 @@ export function AboutPage() {
             </p>
             <p className="text-base leading-relaxed text-foreground">
               Unlike fresh flowers that fade within days, our handcrafted
-              crochet bouquets are designed to last. By creating reusable floral
-              keepsakes, we offer a meaningful and long-lasting alternative that
-              can be enjoyed long after the special occasion has passed.
+              Chenille stem bouquets are designed to last. By creating reusable
+              floral keepsakes, we offer a meaningful and long-lasting
+              alternative that can be enjoyed long after the special occasion
+              has passed.
             </p>
           </div>
         </div>
