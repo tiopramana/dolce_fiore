@@ -128,6 +128,16 @@ const faqs = [
       "We recommend placing your order at least 2–5 days before your preferred collection date. However, you are welcome to order earlier to secure your preferred time slot.",
   },
   {
+    title: "Do I need to pay in advance?",
+    content:
+      "Yes. Since every bouquet is handmade and made-to-order, full payment is required before we start your order. This confirms your booking, allows us to prepare the materials, and helps prevent cancellations after production has begun.",
+  },
+  {
+    title: "What payment methods do you accept?",
+    content:
+      "We currently accept: •⁠  ⁠PayNow •⁠  ⁠PayLah!, Payment details will be provided once your order is confirmed.",
+  },
+  {
     title: "Where can I collect my order?",
     content:
       "Self-pickup appointments can be arranged at the Yuhua Village Market area or Jurong East MRT. Collection details will be provided after your order is confirmed.",
@@ -401,7 +411,7 @@ export const Home = () => {
             <img
               src={col2}
               alt="Flowers"
-              className="hidden md:block lg:h-[70%] w-full h-full rounded-3xl object-cover"
+              className="hidden md:block lg:h-[90%] w-full h-full rounded-3xl object-cover"
             />
           </div>
 
