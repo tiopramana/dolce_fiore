@@ -98,7 +98,7 @@ export function AboutPage() {
           </div>
 
           {/* Studio image card */}
-          <div className="relative aspect-square overflow-hidden bg-muted md:aspect-auto group">
+          <div className="relative aspect-square overflow-hidden bg-muted md:aspect-auto group border border-gray-400/30 p-3">
             <img
               src={studioImg}
               alt="Cartelle studio interior"
@@ -110,7 +110,7 @@ export function AboutPage() {
           </div>
 
           {/* Craftsmanship image card */}
-          <div className="relative aspect-square overflow-hidden bg-muted group">
+          <div className="relative aspect-square overflow-hidden bg-muted group border border-gray-400/30 p-3">
             <img
               src={craftImg}
               alt="Hand stitching detail"

@@ -73,7 +73,10 @@ export function ProductDetail() {
           <span className="mx-2">/</span>
           {product.category_name && (
             <>
-              <span>{product.category_name}</span>
+              <Link to={`/shop?category=${product.category_slug}`}>
+                <span>{product.category_name}</span>
+              </Link>
+
               <span className="mx-2">/</span>
             </>
           )}

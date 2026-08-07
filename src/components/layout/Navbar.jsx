@@ -11,6 +11,9 @@ const shopQuickLinks = [
   { label: "All Products", slug: "" },
   { label: "Best Sellers", slug: "" },
   { label: "New Arrivals", slug: "" },
+  { label: "Sale & Offers", slug: "" },
+  { label: "Trending Now", slug: "" },
+  { label: "Back in Stock", slug: "" },
 ];
 
 export function Navbar() {

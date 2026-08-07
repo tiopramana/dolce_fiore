@@ -168,7 +168,7 @@ function FeaturedCard({ posts }) {
       to={`/news/${posts.id}`}
       className="group col-span-1 block md:col-span-2"
     >
-      <div className="relative aspect-video w-full overflow-hidden bg-muted border border-gray-400">
+      <div className="relative aspect-video w-full overflow-hidden bg-muted border border-gray-400/30 p-3">
         <img
           src={resolveImageUrl(posts.image_url)}
           alt={posts.name}
@@ -208,7 +208,7 @@ function FeaturedCard({ posts }) {
 function SmallCard({ posts }) {
   return (
     <Link to={`/news/${posts.id}`} className="group block">
-      <div className="relative aspect-4/3 w-full overflow-hidden bg-muted border border-gray-400">
+      <div className="relative aspect-4/3 w-full overflow-hidden bg-muted border border-gray-400/30 p-3">
         <img
           src={resolveImageUrl(posts.image_url)}
           alt={posts.title}
