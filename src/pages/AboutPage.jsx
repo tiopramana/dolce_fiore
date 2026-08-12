@@ -98,24 +98,24 @@ export function AboutPage() {
           </div>
 
           {/* Studio image card */}
-          <div className="relative aspect-square overflow-hidden bg-muted md:aspect-auto group p-3">
+          <div className="relative aspect-square sm:aspect-[4/3] md:aspect-[16/10] lg:aspect-auto overflow-hidden bg-muted group p-3 border border-gray-400/30">
             <img
               src={studioImg}
               alt="Cartelle studio interior"
-              width={1024}
-              height={768}
+              width={1920}
+              height={1080}
               loading="lazy"
               className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
             />
           </div>
 
           {/* Craftsmanship image card */}
-          <div className="relative aspect-square overflow-hidden bg-muted group border border-gray-400/30 p-3">
+          <div className="relative aspect-square sm:aspect-[4/3] md:aspect-[16/10] lg:aspect-square overflow-hidden bg-muted group border border-gray-400/30 p-3">
             <img
               src={craftImg}
               alt="Hand stitching detail"
-              width={1024}
-              height={1024}
+              width={600}
+              height={400}
               loading="lazy"
               className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
             />
