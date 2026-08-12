@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export function CtaBanner() {
   return (
-    <section className="relative mx-auto w-full h-full max-w-400 overflow-hidden bg-[#ffffff] px-6 py-20 md:py-20 shadow-[0px_7px_29px_0px_rgba(100,100,111,0.2)]">
+    <section className="relative mx-auto w-full h-full max-w-400 overflow-hidden bg-background px-6 py-20 md:py-20 shadow-[0px_7px_29px_0px_rgba(100,100,111,0.2)]">
       {/* diagonal light/shadow overlay */}
       <div
         aria-hidden

@@ -1,6 +1,6 @@
 import { Navbar } from "../components/layout/Navbar";
-import studioImg from "../assets/col1.png";
-import craftImg from "../assets/col2.png";
+import studioImg from "../assets/favicon.jpg";
+import craftImg from "../assets/col2.webp";
 import { Footer } from "../components/layout/Footer";
 
 const values = [
@@ -98,7 +98,7 @@ export function AboutPage() {
           </div>
 
           {/* Studio image card */}
-          <div className="relative aspect-square overflow-hidden bg-muted md:aspect-auto group border border-gray-400/30 p-3">
+          <div className="relative aspect-square overflow-hidden bg-muted md:aspect-auto group p-3">
             <img
               src={studioImg}
               alt="Cartelle studio interior"
