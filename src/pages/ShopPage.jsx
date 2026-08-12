@@ -11,7 +11,7 @@ import { resolveImageUrl } from "../services/api";
 
 const INSTAGRAM_USER = "dolcee_fioree";
 const PRICE_MIN = 0;
-const PRICE_MAX = 500;
+const PRICE_MAX = 200;
 
 export function Shop() {
   const [searchParams, setSearchParams] = useSearchParams();

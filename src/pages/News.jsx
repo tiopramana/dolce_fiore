@@ -66,7 +66,7 @@ export function NewsPage() {
         <div className="mb-8">
           <input
             type="text"
-            placeholder="Search postss..."
+            placeholder="Search posts..."
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             className="w-full max-w-md rounded-lg border border-border bg-background px-4 py-2 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-foreground"
@@ -116,21 +116,21 @@ export function NewsPage() {
         {/* Loading */}
         {loading && (
           <div className="flex h-64 items-center justify-center text-sm text-muted-foreground">
-            Loading postss...
+            Loading posts...
           </div>
         )}
 
         {/* Error */}
         {error && (
           <div className="flex h-64 items-center justify-center text-sm text-red-400">
-            Failed to load postss. Please try again.
+            Failed to load posts. Please try again.
           </div>
         )}
 
         {/* Empty */}
         {!loading && !error && filtered.length === 0 && (
           <div className="flex h-64 items-center justify-center text-sm text-muted-foreground">
-            No postss in this category yet.
+            No posts in this category yet.
           </div>
         )}
 
