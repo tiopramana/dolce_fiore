@@ -16,10 +16,8 @@ import { NotFound } from "../pages/NotFound.jsx";
 import { NewsPage } from "../pages/News.jsx";
 import { NewsDetail } from "../pages/NewsDetail.jsx";
 
-import {
-  LoadingScreen,
-  PageSkeleton,
-} from "../components/ui/LoadingSpinner.jsx";
+import { PageSkeleton } from "../components/ui/SkeletonLoading.js";
+import { LoadingScreen } from "../components/ui/LoadingAnimation.js";
 
 export function RootLayout() {
   const location = useLocation();
