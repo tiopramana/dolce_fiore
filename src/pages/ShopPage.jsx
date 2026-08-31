@@ -55,14 +55,17 @@ export function Shop() {
     return products.filter((p) => {
       if (query && !p.name.toLowerCase().includes(query.toLowerCase()))
         return false;
+
       if (
         selectedCategories.length &&
-        !selectedCategories.includes(p.category_slug)
+        !p.categories.some((c) => selectedCategories.includes(c.slug))
       )
         return false;
+
       if (p.price !== undefined) {
         if (p.price < priceRange[0] || p.price > priceRange[1]) return false;
       }
+
       return true;
     });
   }, [query, selectedCategories, priceRange, products]);
@@ -257,7 +260,7 @@ export function Shop() {
                       name={p.name}
                       price={`SGD $${p.price}`}
                       image={resolveImageUrl(p.image_url)}
-                      categoryName={p.category_name}
+                      categoryName={p.categories}
                     />
                   </Link>
                 ))}
