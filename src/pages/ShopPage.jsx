@@ -253,7 +253,7 @@ export function Shop() {
 
             {/* Grid */}
             {!productsLoading && !productsError && filtered.length > 0 && (
-              <div className="grid grid-cols-1 gap-x-3 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
+              <div className="grid grid-cols-2 gap-x-3 gap-y-8 sm:grid-cols-3 lg:grid-cols-4">
                 {filtered.map((p) => (
                   <Link to={`/shop/${p.id}`} key={p.id}>
                     <ProductCard

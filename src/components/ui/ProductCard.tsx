@@ -11,11 +11,11 @@ export function ProductCard({ name, price, image }: ProductCardProps) {
 
   return (
     <div
-      className="group relative border border-gray-400/30 p-3"
+      className="group relative border border-gray-400/30 p-3 flex flex-col h-full justify-between"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
-      <div className="relative aspect-4/5 w-full overflow-hidden bg-muted">
+      <div className="relative aspect-5/8 w-full overflow-hidden bg-muted">
         <img
           src={image}
           alt={name}
@@ -27,11 +27,11 @@ export function ProductCard({ name, price, image }: ProductCardProps) {
           }`}
         />
       </div>
-      <div className="mt-2">
+      <div className="mt-2 flex flex-col grow justify-between">
         <h3 className="text-[16px] font-normal tracking-tight text-foreground">
           {name}
         </h3>
-        <p className="mt-1 text-sm text-muted-foreground text-slate-500">
+        <p className="mt-1 text-sm text-muted-foreground text-slate-500 border-t border-t-slate-400/60 py-1">
           {price}
         </p>
       </div>
