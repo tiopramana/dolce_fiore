@@ -156,6 +156,11 @@ const faqs = [
       "Each bouquet is handcrafted, making every piece unique. While we strive to recreate designs as accurately as possible, slight variations may occur. Please also note that product photos are styled and taken under different lighting conditions, so actual colors may vary slightly.",
   },
   {
+    title: "Can I provide my own items to include in the bouquet?",
+    content:
+      "Yes! You may pass us your own items such as soft toys, chocolates, or other small gifts to be included in your bouquet. Please pass the items below our block.",
+  },
+  {
     title: "Do you offer delivery?",
     content:
       "Yes, delivery is available via Lalamove (car delivery). Delivery fees may vary depending on distance and demand. The delivery cost will be provided on the day of dispatch. Alternatively, you may arrange your own courier service.",
