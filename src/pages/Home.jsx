@@ -1,4 +1,5 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
+
 import { Navbar } from "../components/layout/Navbar";
 import { Footer } from "../components/layout/Footer";
 import { ProductCard } from "../components/ui/ProductCard";
@@ -12,10 +13,11 @@ import { useProducts } from "../hooks/useProducts";
 import { resolveImageUrl } from "../services/api";
 import { Link } from "react-router-dom";
 
-import hero1 from "../assets/hero1.webp";
-import hero2 from "../assets/hero2.webp";
-import hero3 from "../assets/hero3.webp";
-import hero4 from "../assets/hero4.webp";
+import hero1 from "../assets/hero-1.jpeg";
+import hero2 from "../assets/hero-2.jpeg";
+import hero3 from "../assets/hero-3.jpeg";
+import hero4 from "../assets/hero-4.jpeg";
+import hero5 from "../assets/hero-5.jpeg";
 
 import col2 from "../assets/col2.webp";
 
@@ -97,30 +99,30 @@ function StaggeredList({
 }
 
 // ─── Data ────────────────────────────────────────────────────────────────────
-const slides = [
-  {
-    image: hero1,
-    title: "Hand Crafted",
-    description: "Everlasting Blooms, Meticulously Crafted by Hand.",
-  },
-  {
-    image: hero2,
-    title: "Preordered",
-    description: "Slowly Crafted with Love. Pre-Order Your Custom Blooms Now.",
-  },
-  {
-    image: hero3,
-    title: "Custom Bouquet",
-    description:
-      "Designed Just for You. Create a Personalized Bouquet for Every Special Moment.",
-  },
-  {
-    image: hero4,
-    title: "Timeless Gift",
-    description:
-      "Beautiful Handmade Flowers That Stay Vibrant and Memorable for Years to Come.",
-  },
-];
+// const slides = [
+//   {
+//     image: hero1,
+//     title: "Hand Crafted",
+//     description: "Everlasting Blooms, Meticulously Crafted by Hand.",
+//   },
+//   {
+//     image: hero2,
+//     title: "Preordered",
+//     description: "Slowly Crafted with Love. Pre-Order Your Custom Blooms Now.",
+//   },
+//   {
+//     image: hero3,
+//     title: "Custom Bouquet",
+//     description:
+//       "Designed Just for You. Create a Personalized Bouquet for Every Special Moment.",
+//   },
+//   {
+//     image: hero4,
+//     title: "Timeless Gift",
+//     description:
+//       "Beautiful Handmade Flowers That Stay Vibrant and Memorable for Years to Come.",
+//   },
+// ];
 
 const faqs = [
   {
@@ -183,6 +185,51 @@ const services = [
   },
 ];
 
+const cards = [
+  {
+    src: hero1,
+    alt: "Pastel bouquet with pink tulips and lisianthus",
+    rotate: "-10deg",
+    width: "clamp(150px, 28vw, 340px)",
+    height: "clamp(200px, 36vw, 450px)",
+  },
+  {
+    src: hero2,
+    alt: "White carnation bouquet in cream wrapping",
+    rotate: "-6deg",
+    width: "clamp(120px, 20vw, 340px)",
+    height: "clamp(160px, 36vw, 380px)",
+  },
+  {
+    src: hero3,
+    alt: "Daisy bouquet wrapped in kraft paper",
+    rotate: "4deg",
+    width: "clamp(120px, 19vw, 260px)",
+    height: "clamp(160px, 28vw, 340px)",
+  },
+  {
+    src: hero4,
+    alt: "Peach roses and calla lily arrangement",
+    rotate: "-4deg",
+    width: "clamp(120px, 19vw, 260px)",
+    height: "clamp(160px, 28vw, 340px)",
+  },
+  {
+    src: hero5,
+    alt: "Pink peony bouquet in white paper",
+    rotate: "8deg",
+    width: "clamp(120px, 20vw, 340px)",
+    height: "clamp(160px, 36vw, 380px)",
+  },
+  {
+    src: col2,
+    alt: "Pink carnations, hyacinth and tulips",
+    rotate: "7deg",
+    width: "clamp(150px, 28vw, 340px)",
+    height: "clamp(200px, 36vw, 450px)",
+  },
+];
+
 // ─── Component ───────────────────────────────────────────────────────────────
 export const Home = () => {
   const [active, setActive] = useState(0);
@@ -192,6 +239,7 @@ export const Home = () => {
     useProducts();
   const bestSellers = featuredProducts.slice(0, 3); // show first 3 as best sellers
   const collectionItems = featuredProducts.slice(0, 4); // show first 4 as collection
+  const scrollerRef = useRef(null);
 
   // Refs for sections used with useScrollAnimation
   const [bestSellerTitleRef, bestSellerTitleVisible] = useScrollAnimation(0.2);
@@ -203,69 +251,126 @@ export const Home = () => {
   const [ctaRef, ctaVisible] = useScrollAnimation(0.1);
   const [footerRef, footerVisible] = useScrollAnimation(0.05);
 
+  // useEffect(() => {
+  //   const id = setInterval(
+  //     () => setActive((a) => (a + 1) % slides.length),
+  //     6000,
+  //   );
+  //   return () => clearInterval(id);
+  // }, []);
+
   useEffect(() => {
-    const id = setInterval(
-      () => setActive((a) => (a + 1) % slides.length),
-      6000,
-    );
-    return () => clearInterval(id);
+    const el = scrollerRef.current;
+
+    if (!el) return;
+
+    const handleScroll = () => {
+      const cardWidth = el.firstElementChild?.clientWidth ?? 1;
+      const gap = 12; // matches gap-3 below
+      const index = Math.round(el.scrollLeft / (cardWidth + gap));
+      setActive(index);
+    };
+
+    el.addEventListener("scroll", handleScroll, { passive: true });
+    return () => el.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const scrollToIndex = (i) => {
+    const el = scrollerRef.current;
+    if (!el) return;
+    const cardWidth = el.firstElementChild?.clientWidth ?? 0;
+    const gap = 12;
+    el.scrollTo({ left: i * (cardWidth + gap), behavior: "smooth" });
+  };
 
   return (
     <section>
       <StyleInjector />
       <Navbar />
 
-      {/* ── Hero ── */}
-      <div className="mt-25 mx-auto flex max-w-400 px-3 py-2">
-        <div className="relative h-[calc(90vh-4.5rem)] w-full overflow-hidden px-4 pt-4 md:px-6 md:pt-6">
-          <div className="relative h-full w-full overflow-hidden">
-            {slides.map((slide, i) => (
-              <div key={slide.image}>
+      <div className="mx-auto max-w-400 px-6 pt-32 text-center sm:pt-42">
+        <h1 className="text-[13vw] leading-[0.95] tracking-tight text-primary sm:text-6xl lg:text-7xl">
+          Dolce Fiore
+          <br />
+          <span className="text-primary/35">Handmade Flowers</span>
+        </h1>
+
+        <p className="mx-auto mt-7 max-w-md font-body text-base leading-relaxed text-primary">
+          Handmade pipe cleaner flowers, thoughtfully crafted to bloom and last.
+        </p>
+
+        <Link
+          to="/shop"
+          className="hero-btn mb-10 mt-8 inline-flex items-center justify-center bg-black px-10 py-4 text-xs font-medium uppercase tracking-[0.2em] text-white transition-all ease-in-out hover:bg-white hover:text-black md:mb-0"
+        >
+          Shop Now
+        </Link>
+
+        <div className="relative mt-auto w-full overflow-hidden">
+          {/* Desktop / tablet: fanned stack, unchanged */}
+          <div className="hidden items-end justify-center sm:flex">
+            {cards.map((card, i) => (
+              <div
+                key={i}
+                className="shrink-0 overflow-hidden rounded-t-lg shadow-card -ml-8 first:-ml-6 last:-mr-6 sm:-ml-12 sm:first:-ml-10 sm:last:-mr-10"
+                style={{
+                  transform: `rotate(${card.rotate})`,
+                  transformOrigin: "bottom center",
+                  width: card.width,
+                  height: card.height,
+                }}
+              >
                 <img
-                  src={slide.image}
-                  alt={slide.title}
-                  width="auto"
-                  height="auto"
-                  loading={i === 0 ? "eager" : "lazy"}
-                  className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-1000 ${
-                    i === active ? "opacity-100" : "opacity-0"
-                  }`}
-                />
-                <div
-                  className={`absolute inset-0 bg-linear-to-t from-black/60 to-transparent transition-opacity duration-1000 ${
-                    i === active ? "opacity-100" : "opacity-0"
-                  }`}
+                  src={card.src}
+                  alt={card.alt}
+                  width={700}
+                  height={900}
+                  loading={i < 2 ? "eager" : "lazy"}
+                  className="h-full w-full object-cover"
                 />
               </div>
             ))}
+          </div>
 
-            {/* Hero text — animated on load (CSS keyframes) */}
-            <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 px-10 mt-80 text-center">
-              <h1 className="hero-title text-5xl font-semibold tracking-tight text-white drop-shadow-lg md:text-7xl">
-                {slides[active].title}
-              </h1>
-              <p className="hero-desc text-base text-white">
-                {slides[active].description}
-              </p>
-              <Link
-                to="/shop"
-                className="hero-btn md:mb-0 mb-40 inline-flex mt-5 items-center justify-center bg-white px-10 py-4 text-xs font-medium uppercase tracking-[0.2em] text-foreground transition-all hover:bg-black hover:text-white"
-              >
-                Shop Now
-              </Link>
+          {/* Mobile: swipeable carousel */}
+          <div className="sm:hidden">
+            <div
+              ref={scrollerRef}
+              className="flex snap-x snap-mandatory gap-3 overflow-x-auto px-6 pb-2 scrollbar-hide"
+              style={{ scrollBehavior: "smooth" }}
+            >
+              {cards.map((card, i) => (
+                <div
+                  key={i}
+                  className="shrink-0 snap-center overflow-hidden shadow-card border border-gray-400/30 p-3"
+                  style={{
+                    width: "72vw",
+                    maxWidth: "280px",
+                    aspectRatio: "700 / 900",
+                  }}
+                >
+                  <img
+                    src={card.src}
+                    alt={card.alt}
+                    width={700}
+                    height={900}
+                    loading={i < 2 ? "eager" : "lazy"}
+                    className="h-full w-full object-cover"
+                  />
+                </div>
+              ))}
             </div>
 
-            <div className="hero-dots absolute bottom-6 left-1/2 flex -translate-x-1/2 items-center gap-2">
-              {slides.map((_, i) => (
+            {/* Dot indicators */}
+            <div className="mt-2 flex items-center justify-center gap-2">
+              {cards.map((_, i) => (
                 <button
                   key={i}
-                  onClick={() => setActive(i)}
-                  aria-label={`Go to slide ${i + 1}`}
-                  className={`h-0.5 transition-all duration-200 ${
-                    i === active
-                      ? "w-8 bg-white"
-                      : "w-4 bg-zinc-400/70 hover:bg-white/80"
+                  type="button"
+                  onClick={() => scrollToIndex(i)}
+                  aria-label={`Go to image ${i + 1}`}
+                  className={`h-1.5 rounded-full transition-all duration-300 ${
+                    active === i ? "w-2 bg-primary" : "w-1 bg-primary/30"
                   }`}
                 />
               ))}
