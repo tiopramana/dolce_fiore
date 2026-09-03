@@ -13,11 +13,11 @@ import { useProducts } from "../hooks/useProducts";
 import { resolveImageUrl } from "../services/api";
 import { Link } from "react-router-dom";
 
-import hero1 from "../assets/hero-1.jpeg";
-import hero2 from "../assets/hero-2.jpeg";
-import hero3 from "../assets/hero-3.jpeg";
-import hero4 from "../assets/hero-4.jpeg";
-import hero5 from "../assets/hero-5.jpeg";
+import hero1 from "../assets/hero-1.webp";
+import hero2 from "../assets/hero-2.webp";
+import hero3 from "../assets/hero-3.webp";
+import hero4 from "../assets/hero-4.webp";
+import hero5 from "../assets/hero-5.webp";
 
 import col2 from "../assets/col2.webp";
 
