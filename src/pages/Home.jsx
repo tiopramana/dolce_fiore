@@ -170,18 +170,18 @@ const faqs = [
 const services = [
   {
     num: "01",
-    title: "Deliver with quality",
-    desc: "Every product is crafted with care and attention to detail, ensuring the best for your customers.",
+    title: "Handcrafted",
+    desc: "Each bouquet is handmade with care, turning simple pipe cleaners into lasting flowers.",
   },
   {
     num: "02",
-    title: "Hand Crafted",
-    desc: "Every product is crafted with care and attention to detail, ensuring the best for your customers.",
+    title: "Made for You",
+    desc: "Customise your bouquet with your preferred colours, flowers and personal touches.",
   },
   {
     num: "03",
-    title: "Pre-Ordered Book",
-    desc: "Every product is crafted with care and attention to detail, ensuring the best for your customers.",
+    title: "Pre-Order",
+    desc: "All bouquets are made to order. Pre-order in advance to secure your preferred collection date.",
   },
 ];
 
