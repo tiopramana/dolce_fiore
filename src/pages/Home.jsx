@@ -13,6 +13,8 @@ import { useProducts } from "../hooks/useProducts";
 import { resolveImageUrl } from "../services/api";
 import { Link } from "react-router-dom";
 
+import logo from "../assets/favicon.webp";
+
 import hero1 from "../assets/hero-1.webp";
 import hero2 from "../assets/hero-2.webp";
 import hero3 from "../assets/hero-3.webp";
@@ -235,6 +237,15 @@ const cards = [
   },
 ];
 
+const mobileCards = [
+  {
+    isLogo: true,
+    src: logo,
+    alt: "Dolce Fiore Logo",
+  },
+  ...cards,
+];
+
 // ─── Component ───────────────────────────────────────────────────────────────
 export const Home = () => {
   const [active, setActive] = useState(0);
@@ -294,24 +305,24 @@ export const Home = () => {
       <Navbar />
 
       <div className="mx-auto max-w-400 px-6 pt-32 text-center sm:pt-42">
-        <h1 className="text-[13vw] leading-[0.95] tracking-tight text-primary sm:text-6xl lg:text-7xl">
+        <h1 className="hero-title text-[13vw] leading-[0.95] tracking-tight text-primary sm:text-6xl lg:text-7xl">
           Dolce Fiore
           <br />
           <span className="text-primary/35">Handmade Flowers</span>
         </h1>
 
-        <p className="mx-auto mt-7 max-w-md font-body text-base leading-relaxed text-primary">
+        <p className="hero-desc mx-auto mt-7 max-w-md font-body text-base leading-relaxed text-primary">
           Handmade pipe cleaner flowers, thoughtfully crafted to bloom and last.
         </p>
 
         <Link
           to="/shop"
-          className="hero-btn mb-10 mt-8 inline-flex items-center justify-center bg-black px-10 py-4 text-xs font-medium uppercase tracking-[0.2em] text-white transition-all ease-in-out hover:bg-white hover:text-black md:mb-0"
+          className="hero-btn mb-10 mt-8 inline-flex items-center justify-center bg-black px-10 py-4 text-xs font-medium uppercase tracking-[0.2em] text-white transition-all ease-in-out hover:bg-white hover:text-black hover:border-gray-500 border md:mb-0"
         >
           Shop Now
         </Link>
 
-        <div className="relative mt-auto w-full overflow-hidden">
+        <div className="hero-desc relative mt-auto w-full overflow-hidden">
           {/* Desktop / tablet: fanned stack, unchanged */}
           <div className="hidden items-end justify-center sm:flex">
             {cards.map((card, i) => (
@@ -344,31 +355,49 @@ export const Home = () => {
               className="flex snap-x snap-mandatory gap-3 overflow-x-auto px-6 pb-2 scrollbar-hide"
               style={{ scrollBehavior: "smooth" }}
             >
-              {cards.map((card, i) => (
-                <div
-                  key={i}
-                  className="shrink-0 snap-center overflow-hidden shadow-card border border-gray-400/30 p-3"
-                  style={{
-                    width: "72vw",
-                    maxWidth: "280px",
-                    aspectRatio: "700 / 900",
-                  }}
-                >
-                  <img
-                    src={card.src}
-                    alt={card.alt}
-                    width={700}
-                    height={900}
-                    loading={i < 2 ? "eager" : "lazy"}
-                    className="h-full w-full object-cover"
-                  />
-                </div>
-              ))}
+              {mobileCards.map((card, i) =>
+                card.isLogo ? (
+                  <div
+                    key={i}
+                    className="flex shrink-0 snap-center items-center justify-center overflow-hidden shadow-card border border-gray-400/30 p-3"
+                    style={{
+                      width: "72vw",
+                      maxWidth: "280px",
+                      aspectRatio: "700 / 900",
+                    }}
+                  >
+                    <img
+                      src={card.src}
+                      alt={card.alt}
+                      className="h-45 w-45 object-contain opacity-100" // ← tweak these freely
+                    />
+                  </div>
+                ) : (
+                  <div
+                    key={i}
+                    className="shrink-0 snap-center overflow-hidden shadow-card border border-gray-400/30 p-3"
+                    style={{
+                      width: "72vw",
+                      maxWidth: "280px",
+                      aspectRatio: "700 / 900",
+                    }}
+                  >
+                    <img
+                      src={card.src}
+                      alt={card.alt}
+                      width={700}
+                      height={900}
+                      loading={i < 2 ? "eager" : "lazy"}
+                      className="h-full w-full object-cover"
+                    />
+                  </div>
+                ),
+              )}
             </div>
 
             {/* Dot indicators */}
             <div className="mt-2 flex items-center justify-center gap-2">
-              {cards.map((_, i) => (
+              {mobileCards.map((_, i) => (
                 <button
                   key={i}
                   type="button"
