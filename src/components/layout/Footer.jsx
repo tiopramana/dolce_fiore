@@ -1,4 +1,4 @@
-import Logo from "../../assets/favicon.jpg";
+import Logo from "../../assets/favicon.webp";
 export function Footer() {
   return (
     <footer className="border py-12 px-4 sm:px-6 lg:px-8 mt-50 border-gray-300">

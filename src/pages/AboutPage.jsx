@@ -1,5 +1,5 @@
 import { Navbar } from "../components/layout/Navbar";
-import studioImg from "../assets/favicon.jpg";
+import studioImg from "../assets/favicon.webp";
 import craftImg from "../assets/col2.webp";
 import { Footer } from "../components/layout/Footer";
 
