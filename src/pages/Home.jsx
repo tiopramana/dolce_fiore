@@ -129,8 +129,9 @@ function StaggeredList({
 const faqs = [
   {
     title: "How far in advance should I place my order?",
-    content:
-      "We recommend placing your order at least 2–5 days before your preferred collection date. However, you are welcome to order earlier to secure your preferred time slot.",
+    content: `We recommend placing your order at least 2–5 days before your preferred collection date.
+For peak seasons such as Valentine’s Day, Mother’s Day and graduation, we recommend booking at least 1 week in advance to secure your preferred slot, as these periods tend to fill up quickly.
+You’re always welcome to book earlier to secure your preferred date and time.`,
   },
   {
     title: "Do I need to pay in advance?",
@@ -139,8 +140,10 @@ const faqs = [
   },
   {
     title: "What payment methods do you accept?",
-    content:
-      "We currently accept: •⁠  ⁠PayNow •⁠  ⁠PayLah!, Payment details will be provided once your order is confirmed.",
+    content: `We currently accept: 
+      •⁠  ⁠PayNow
+      •⁠  ⁠PayLah!
+      Payment details will be provided once your order is confirmed.`,
   },
   {
     title: "Where can I collect my order?",
@@ -584,7 +587,9 @@ export const Home = () => {
                       isOpen ? "max-h-40 opacity-100 mt-4" : "max-h-0 opacity-0"
                     }`}
                   >
-                    <p className="text-gray-600 leading-7">{faq.content}</p>
+                    <p className="text-gray-600 leading-7 whitespace-pre-line">
+                      {faq.content}
+                    </p>
                   </div>
                 </div>
               );
