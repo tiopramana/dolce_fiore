@@ -42,9 +42,9 @@ export function AboutPage() {
           </h1>
           <p className="mt-5 text-sm text-muted-foreground md:text-base">
             At Dolce Fiore, we believe every bouquet should tell a story.
-            Through carefully crafted Chenille stem and wire flowers, we create
-            timeless gifts that celebrate life's special moments and become
-            cherished memories for years to come.
+            Through carefully crafted Fuzzy Wire flowers, we create timeless
+            gifts that celebrate life's special moments and become cherished
+            memories for years to come.
           </p>
         </div>
 
@@ -62,7 +62,7 @@ export function AboutPage() {
                   creatively at home. What started with a few handmade Chenille
                   stem flowers soon grew into a passion for creating meaningful
                   gifts that bring joy to others. Today, every bouquet is
-                  carefully handcrafted with love, turning yarn and wire into
+                  carefully handcrafted with love, turning fuzzy wire into
                   timeless blooms that celebrate life's special moments.
                 </p>
               </div>
@@ -127,11 +127,10 @@ export function AboutPage() {
               Materials
             </p>
             <p className="text-base leading-relaxed text-foreground">
-              Our bouquets are handcrafted using high-quality Chenille stem yarn
-              and flexible floral wire, carefully selected for their durability
-              and beauty. Each flower is shaped by hand, allowing us to create
-              elegant blooms that maintain their form and can be treasured for
-              years to come.
+              Our bouquets are handcrafted using high-quality Fuzzy Wire,
+              carefully selected for their durability and beauty. Each flower is
+              shaped by hand, allowing us to create elegant blooms that maintain
+              their form and can be treasured for years to come.
             </p>
           </div>
 
@@ -141,11 +140,10 @@ export function AboutPage() {
               Sustainability
             </p>
             <p className="text-base leading-relaxed text-foreground">
-              Unlike fresh flowers that fade within days, our handcrafted
-              Chenille stem bouquets are designed to last. By creating reusable
-              floral keepsakes, we offer a meaningful and long-lasting
-              alternative that can be enjoyed long after the special occasion
-              has passed.
+              Unlike fresh flowers that fade within days, our handcrafted Fuzzy
+              Wire bouquets are designed to last. By creating reusable floral
+              keepsakes, we offer a meaningful and long-lasting alternative that
+              can be enjoyed long after the special occasion has passed.
             </p>
           </div>
         </div>

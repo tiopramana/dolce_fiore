@@ -52,22 +52,30 @@ export function Shop() {
   // };
 
   const filtered = useMemo(() => {
-    return products.filter((p) => {
-      if (query && !p.name.toLowerCase().includes(query.toLowerCase()))
-        return false;
+    return products
+      .filter((p) => {
+        if (query && !p.name.toLowerCase().includes(query.toLowerCase()))
+          return false;
 
-      if (
-        selectedCategories.length &&
-        !p.categories.some((c) => selectedCategories.includes(c.slug))
-      )
-        return false;
+        if (
+          selectedCategories.length &&
+          !p.categories.some((c) => selectedCategories.includes(c.slug))
+        )
+          return false;
 
-      if (p.price !== undefined) {
-        if (p.price < priceRange[0] || p.price > priceRange[1]) return false;
-      }
+        if (p.price !== undefined) {
+          if (priceRange[0] !== 0 && Number(p.price) < Number(priceRange[0])) {
+            return false;
+          }
+        }
 
-      return true;
-    });
+        return true;
+      })
+      .sort((a, b) => {
+        if (priceRange === 0) return 0;
+
+        return Number(a.price) - Number(b.price);
+      });
   }, [query, selectedCategories, priceRange, products]);
 
   return (
@@ -169,7 +177,7 @@ export function Shop() {
                   onValueChange={(v) => setPriceRange([v[0], v[1]])}
                   min={PRICE_MIN}
                   max={PRICE_MAX}
-                  step={5}
+                  step={1}
                   className="mt-2"
                 />
 

@@ -128,7 +128,7 @@ export function CurvedProductArc() {
             Sold Last Month
           </h2>
           <p className="mx-auto mt-5 max-w-md text-sm text-muted-foreground md:text-base">
-            "We create handcrafted Chenille stem and wire flowers that capture
+            "We create handcraftedFuzzy Wire and wire flowers that capture
             beauty, elegance, and lasting sentiment in every detail."
           </p>
 
