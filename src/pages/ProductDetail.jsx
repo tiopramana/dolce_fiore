@@ -1,5 +1,6 @@
 import { Link, useParams, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import DOMPurify from "dompurify";
 import { ChevronDown } from "lucide-react";
 import { Navbar } from "../components/layout/Navbar";
 import { useProduct } from "../hooks/useProduct";
@@ -129,11 +130,14 @@ export function ProductDetail() {
                 {product.name}
               </h1>
 
-              {/* {product.description && (
-                <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-                  {product.description}
-                </p>
-              )} */}
+              {product.description && (
+                <div
+                  className="mt-4 text-sm leading-relaxed text-muted-foreground"
+                  dangerouslySetInnerHTML={{
+                    __html: DOMPurify.sanitize(product.description),
+                  }}
+                />
+              )}
 
               {/* ── Primary: Order Now ── */}
               <button

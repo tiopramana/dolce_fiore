@@ -23,7 +23,7 @@ export function OrderPage() {
     const input = dateInputRef.current;
     if (!input) return;
     if (typeof input.showPicker() === "function") {
-      input.showPicker;
+      input.showPicker();
     } else {
       input.focus();
       input.click();
@@ -33,6 +33,7 @@ export function OrderPage() {
   const [form, setForm] = useState({
     name: "",
     date: "",
+    quantity: "",
     delivery: "",
     notes: "",
   });
@@ -57,7 +58,8 @@ export function OrderPage() {
       `Hi Dolce Fiore! I'd like to place an order 🌸`,
       ``,
       `🌷 Product  : ${product.name}`,
-      `📂 Category : ${product.category_name}`,
+      `🔢 Quantity : ${form.quantity}`,
+      `💲 Price    : SGD $${product.price}`,
       `👤 Name     : ${form.name}`,
       `📅 Date     : ${form.date}`,
       `🚗 Delivery : ${form.delivery}`,
@@ -65,6 +67,7 @@ export function OrderPage() {
       ``,
       `Please confirm availability, thank you!`,
     ]
+
       .filter((line) => line !== null)
       .join("\n");
   }
@@ -252,6 +255,7 @@ export function OrderPage() {
                     setForm({
                       name: "",
                       date: "",
+                      quantity: "",
                       delivery: "",
                       notes: "",
                     });
@@ -308,6 +312,25 @@ export function OrderPage() {
                     <p className="mt-1 text-xs text-muted-foreground">
                       Please order at least 2–5 days in advance.
                     </p>
+                  </div>
+
+                  <div>
+                    <label className="mb-2 block text-xs uppercase tracking-[0.18em] text-muted-foreground">
+                      Quantity <span className="text-red-400">*</span>
+                    </label>
+                    <div className="relative">
+                      <input
+                        onChange={handleChange}
+                        type="number"
+                        name="quantity"
+                        min="1"
+                        defaultValue="1"
+                        value={form.quantity}
+                        required
+                        className="w-full border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                        placeholder="0"
+                      />
+                    </div>
                   </div>
 
                   <div>
