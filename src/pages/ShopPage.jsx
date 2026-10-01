@@ -52,31 +52,40 @@ export function Shop() {
   // };
 
   const filtered = useMemo(() => {
-    return products
-      .filter((p) => {
-        if (query && !p.name.toLowerCase().includes(query.toLowerCase()))
-          return false;
+    const result = products.filter((p) => {
+      // Search
+      if (query && !p.name.toLowerCase().includes(query.toLowerCase())) {
+        return false;
+      }
 
-        if (
-          selectedCategories.length &&
-          !p.categories.some((c) => selectedCategories.includes(c.slug))
-        )
-          return false;
+      // Category
+      if (
+        selectedCategories.length > 0 &&
+        !p.categories?.some((c) => selectedCategories.includes(c.slug))
+      ) {
+        return false;
+      }
 
-        if (p.price !== undefined) {
-          if (priceRange[0] !== 0 && Number(p.price) < Number(priceRange[0])) {
-            return false;
-          }
-        }
+      // Price
+      if (
+        p.price !== undefined &&
+        priceRange[0] !== 0 &&
+        Number(p.price) < Number(priceRange[0])
+      ) {
+        return false;
+      }
 
-        return true;
-      })
-      .sort((a, b) => {
-        if (priceRange === 0) return 0;
+      return true;
+    });
 
+    if (priceRange[0] !== 0) {
+      result.sort((a, b) => {
         return Number(a.price) - Number(b.price);
       });
-  }, [query, selectedCategories, priceRange, products]);
+    }
+
+    return result;
+  }, [products, query, selectedCategories, priceRange]);
 
   return (
     <div className="relative min-h-screen bg-background">
