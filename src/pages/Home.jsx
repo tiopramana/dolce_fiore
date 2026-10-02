@@ -18,7 +18,7 @@ import logo from "../assets/favicon.webp";
 import hero1 from "../assets/hero-1.webp";
 import hero2 from "../assets/hero-2.webp";
 import hero3 from "../assets/hero-3.webp";
-import hero4 from "../assets/hero-4.webp";
+import hero4 from "../assets/company-bouquet.webp";
 import hero5 from "../assets/hero-5.webp";
 
 import col2 from "../assets/col2.webp";

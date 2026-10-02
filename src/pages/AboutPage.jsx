@@ -66,22 +66,13 @@ export function AboutPage() {
                   timeless blooms that celebrate life's special moments.
                 </p>
               </div>
-              <div className="mt-12 grid grid-cols-3 gap-6 border-t border-border pt-8">
+              <div className="mt-12 grid grid-cols-2 gap-6 border-t border-border pt-8">
                 <div>
                   <p className="text-3xl font-semibold tracking-tight text-foreground">
-                    50+
+                    1000+
                   </p>
                   <p className="mt-1 text-sm text-muted-foreground">
                     Bouquets handcrafted
-                  </p>
-                </div>
-
-                <div>
-                  <p className="text-3xl font-semibold tracking-tight text-foreground">
-                    20+
-                  </p>
-                  <p className="mt-1 text-sm text-muted-foreground">
-                    Happy customers
                   </p>
                 </div>
 
@@ -105,7 +96,7 @@ export function AboutPage() {
               width={1920}
               height={1080}
               loading="lazy"
-              className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+              className="h-full w-full object-cover transition-transform duration-700"
             />
           </div>
 
