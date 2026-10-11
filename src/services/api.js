@@ -1,6 +1,9 @@
 // Base URL — in development points to your local Fastify server
 // When you go live, change this to your production domain
-const BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:3000";
+const BASE_URL =
+  import.meta.env.VITE_API_TARGET === "vps"
+    ? import.meta.env.VITE_API_VPS
+    : import.meta.env.VITE_API_URL;
 
 /**
  * Base fetch wrapper — handles errors consistently
