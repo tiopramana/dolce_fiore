@@ -1,7 +1,7 @@
 {
   "rewrites": [
     {
-      "source": "/backend-api/:path*",
+      "source": "/api/:path*",
       "destination": "/api/proxy?path=:path*"
     },
     {
