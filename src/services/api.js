@@ -1,31 +1,33 @@
+// Used ONLY for images (/uploads). API calls never use this.
+const ASSET_BASE_URL =
+  import.meta.env.VITE_API_TARGET === "vps"
+    ? import.meta.env.VITE_API_VPS
+    : import.meta.env.VITE_API_URL;
+
 /**
- * API requests through the Vercel server-side proxy.
+ * All API requests go to /api on your own domain.
+ * Dev:  Vite proxy adds the key.
+ * Prod: Vercel function (api/proxy.js) adds the key.
  */
-const BASE_URL = "";
-
 export async function apiFetch(path) {
-  const normalizedPath = path.startsWith("/") ? path : `/${path}`;
+  const res = await fetch(`/api${path}`);
 
-  const response = await fetch(`/api${normalizedPath}`);
-
-  if (!response.ok) {
-    const error = await response.json().catch(() => ({}));
-
-    throw new Error(error.error || `Request failed: ${response.status}`);
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({}));
+    throw new Error(err.error || `Request failed: ${res.status}`);
   }
 
-  return response.json();
+  return res.json();
 }
 
 /**
- * Build image URL.
+ * Build the full image URL from whatever is stored in the DB.
+ *
+ * "rose.jpg"                  → `${ASSET_BASE_URL}/uploads/rose.jpg`
+ * "https://res.cloudinary..." → returned as-is
  */
 export function resolveImageUrl(imageUrl) {
   if (!imageUrl) return "/placeholder.png";
-
-  if (/^https?:\/\//i.test(imageUrl)) {
-    return imageUrl;
-  }
-
-  return `${BASE_URL}/uploads/${imageUrl.replace(/^\/+/, "")}`;
+  if (imageUrl.startsWith("http")) return imageUrl;
+  return `${ASSET_BASE_URL}/uploads/${imageUrl}`;
 }
