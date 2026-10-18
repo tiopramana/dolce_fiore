@@ -1,13 +1,21 @@
+const ALLOWED = new Set(["products", "categories", "blog", "news"]);
+const SEGMENT = /^[A-Za-z0-9_-]+$/;
+
 export default async function handler(req, res) {
   if (!["GET", "HEAD"].includes(req.method)) {
     return res.status(405).json({ error: "Method not allowed" });
   }
 
-  const allowedPaths = new Set(["products", "categories", "blog", "news"]);
+  const segments = String(req.query.path || "")
+    .split("/")
+    .filter(Boolean);
 
-  const path = String(req.query.path || "");
-
-  if (!allowedPaths.has(path)) {
+  if (
+    segments.length === 0 ||
+    segments.length > 3 ||
+    !ALLOWED.has(segments[0]) ||
+    !segments.every((s) => SEGMENT.test(s))
+  ) {
     return res.status(404).json({ error: "Not found" });
   }
 
@@ -20,16 +28,12 @@ export default async function handler(req, res) {
     return res.status(500).json({ error: "Server configuration error" });
   }
 
-  const upstreamUrl = new URL(`/api/${path}`, baseUrl);
+  const upstreamUrl = new URL(`/api/${segments.join("/")}`, baseUrl);
 
-  // Teruskan parameter query selain parameter proxy "path".
   for (const [key, value] of Object.entries(req.query)) {
     if (key === "path") continue;
-
     for (const item of Array.isArray(value) ? value : [value]) {
-      if (item !== undefined) {
-        upstreamUrl.searchParams.append(key, item);
-      }
+      if (item !== undefined) upstreamUrl.searchParams.append(key, item);
     }
   }
 
@@ -48,14 +52,12 @@ export default async function handler(req, res) {
       "Content-Type",
       upstream.headers.get("content-type") || "application/json",
     );
-    res.setHeader("Cache-Control", "no-store");
+    // Optional: cache at Vercel's edge to reduce load on your backend
+    res.setHeader("Cache-Control", "s-maxage=60, stale-while-revalidate=300");
 
     return res.status(upstream.status).send(body);
   } catch (error) {
     console.error("API proxy failed:", error.message);
-
-    return res.status(502).json({
-      error: "Upstream API unavailable",
-    });
+    return res.status(502).json({ error: "Upstream API unavailable" });
   }
 }
