@@ -8,7 +8,7 @@ const BASE_URL =
  */
 export async function apiFetch(path) {
   const normalizedPath = path.startsWith("/") ? path : `/${path}`;
-  const res = await fetch(`${BASE_URL}/api${normalizedPath}`);
+  const res = await fetch(`${BASE_URL}${normalizedPath}`);
 
   if (!res.ok) {
     const err = await res.json().catch(() => ({}));
