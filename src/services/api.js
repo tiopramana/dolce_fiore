@@ -1,29 +1,31 @@
-const BASE_URL =
-  import.meta.env.VITE_API_TARGET === "vps"
-    ? import.meta.env.VITE_API_VPS
-    : import.meta.env.VITE_API_URL;
-
 /**
- * Base fetch wrapper
+ * API requests through the Vercel server-side proxy.
  */
+const BASE_URL = "";
+
 export async function apiFetch(path) {
   const normalizedPath = path.startsWith("/") ? path : `/${path}`;
-  const res = await fetch(`${BASE_URL}/api${normalizedPath}`);
 
-  if (!res.ok) {
-    const err = await res.json().catch(() => ({}));
-    throw new Error(err.error || `Request failed: ${res.status}`);
+  const response = await fetch(`/backend-api${normalizedPath}`);
+
+  if (!response.ok) {
+    const error = await response.json().catch(() => ({}));
+
+    throw new Error(error.error || `Request failed: ${response.status}`);
   }
 
-  return res.json();
+  return response.json();
 }
 
 /**
- * Build image URL
+ * Build image URL.
  */
 export function resolveImageUrl(imageUrl) {
   if (!imageUrl) return "/placeholder.png";
-  if (imageUrl.startsWith("http")) return imageUrl;
 
-  return `${BASE_URL}/uploads/${imageUrl}`;
+  if (/^https?:\/\//i.test(imageUrl)) {
+    return imageUrl;
+  }
+
+  return `${BASE_URL}/uploads/${imageUrl.replace(/^\/+/, "")}`;
 }
