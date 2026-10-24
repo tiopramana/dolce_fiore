@@ -42,7 +42,7 @@ export function OrderPage() {
   const [formError, setFormError] = useState("");
 
   function handleChange(e) {
-    setForm((prev) => ({ ...prev, [e.target.date]: e.target.value }));
+    setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   }
 
   function validate() {
