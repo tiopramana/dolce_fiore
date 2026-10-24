@@ -31,7 +31,6 @@ export function OrderPage() {
   };
 
   const [form, setForm] = useState({
-    name: "",
     date: "",
     quantity: "",
     delivery: "",
@@ -60,7 +59,6 @@ export function OrderPage() {
       `🌷 Product  : ${product.name}`,
       `🔢 Quantity : ${form.quantity}`,
       `💲 Price    : SGD $${product.price}`,
-      `👤 Name     : ${form.name}`,
       `📅 Date     : ${form.date}`,
       `🚗 Delivery : ${form.delivery}`,
       form.notes.trim() ? `📝 Notes    : ${form.notes}` : null,
@@ -253,7 +251,6 @@ export function OrderPage() {
                   onClick={() => {
                     setSubmitted(false);
                     setForm({
-                      name: "",
                       date: "",
                       quantity: "",
                       delivery: "",
@@ -273,7 +270,7 @@ export function OrderPage() {
                 </h1>
 
                 <div className="space-y-6">
-                  <div>
+                  {/* <div>
                     <label className="mb-2 block text-xs uppercase tracking-[0.18em] text-muted-foreground">
                       Full Name <span className="text-red-400">*</span>
                     </label>
@@ -285,7 +282,7 @@ export function OrderPage() {
                       placeholder="e.g. Sarah Tan"
                       className="w-full border border-border bg-transparent px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-foreground/40 focus:outline-none"
                     />
-                  </div>
+                  </div> */}
 
                   <div>
                     <label className="mb-2 block text-xs uppercase tracking-[0.18em] text-muted-foreground">
