@@ -19,18 +19,19 @@ export function OrderPage() {
 
   const dateInputRef = useRef(null);
 
-  const openDatePicker = () => {
+  const openDatePicker = (e) => {
     const input = dateInputRef.current;
-    if (!input) return;
-    if (typeof input.showPicker() === "function") {
+    if (!input || e.target === input) return; // a click on the input itself already opens it natively
+
+    try {
       input.showPicker();
-    } else {
-      input.focus();
-      input.click();
+    } catch {
+      input.focus(); // fallback for browsers that don't support showPicker
     }
   };
 
   const [form, setForm] = useState({
+    name: "",
     date: "",
     quantity: "",
     delivery: "",
@@ -46,6 +47,7 @@ export function OrderPage() {
   }
 
   function validate() {
+    if (!form.name.trim()) return "Please enter your name.";
     if (!form.date) return "Please select a preferred date.";
     if (!form.delivery) return "Please select a delivery option.";
     return "";
@@ -58,6 +60,7 @@ export function OrderPage() {
       `🌷 Product  : ${product.name}`,
       `🔢 Quantity : ${form.quantity}`,
       `💲 Price    : SGD $${product.price}`,
+      `👤 Name     : ${form.name}`,
       `📅 Date     : ${form.date}`,
       `🚗 Delivery : ${form.delivery}`,
       form.notes.trim() ? `📝 Notes    : ${form.notes}` : null,
@@ -250,6 +253,7 @@ export function OrderPage() {
                   onClick={() => {
                     setSubmitted(false);
                     setForm({
+                      name: "",
                       date: "",
                       quantity: "",
                       delivery: "",
@@ -269,7 +273,7 @@ export function OrderPage() {
                 </h1>
 
                 <div className="space-y-6">
-                  {/* <div>
+                  <div>
                     <label className="mb-2 block text-xs uppercase tracking-[0.18em] text-muted-foreground">
                       Full Name <span className="text-red-400">*</span>
                     </label>
@@ -281,7 +285,7 @@ export function OrderPage() {
                       placeholder="e.g. Sarah Tan"
                       className="w-full border border-border bg-transparent px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-foreground/40 focus:outline-none"
                     />
-                  </div> */}
+                  </div>
 
                   <div>
                     <label className="mb-2 block text-xs uppercase tracking-[0.18em] text-muted-foreground">
