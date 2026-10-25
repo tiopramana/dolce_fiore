@@ -46,7 +46,6 @@ export function OrderPage() {
   }
 
   function validate() {
-    if (!form.name.trim()) return "Please enter your name.";
     if (!form.date) return "Please select a preferred date.";
     if (!form.delivery) return "Please select a delivery option.";
     return "";
